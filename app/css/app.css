@@ -1,0 +1,18 @@
+#header {
+	display: block;
+	padding: 5px;
+	background: #33E5C3;
+	font-size: 16pt;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+}
+
+body{
+	background: #D3FFF0;
+}
+
+#registerBtn {
+	align:center;
+
+}
