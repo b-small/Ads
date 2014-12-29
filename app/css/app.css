@@ -15,8 +15,23 @@ body{
 div{
 	text-align: center;
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
+.adText{
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border: 2px solid;
+	border-color: #33E5C3;
+	border-radius: 10px;
+	background-color: #D3FFF0;
+}
+
+img {
+	border-radius: 5px;
+	max-width: 200px;
+	max-height: 200px;
+}
 .buttons{
 	color: white;
 }
