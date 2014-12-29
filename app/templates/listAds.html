@@ -1,25 +1,59 @@
 <div class="row">
-    <div class="col-lg-3" id="registerLogin">
+    <div class="col-md-2" id="registerLogin">
         <div class="form-group">
-            <div class="col-lg-7">
+            <div class="col-lg-2">
+
+            </div>
+            <div class="col-lg-10">
                 <p>To publish a new ad, please login.</p>
-                <button type="submit" class="btn btn-primary" id="login">Login</button>
+                <a href="#/login"><button class="btn btn-primary" id="login">Login</button></a>
                 <br/>
                 <br/>
-                <button type="submit" class="btn btn-primary" id="register">Register</button>
+                <a href="#/register"> <button class="btn btn-primary" id="register">Register</button></a>
 
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
-asd
-                    </div>
 
-    <div class="col-lg-3">
-        asdafda
-        </div>
-                </div>
-            </fieldset>
-        </form>
+    <div class="col-md-7">
+
+            <ul>
+               <li ng-repeat="ad in data.ads">
+                   <div class="adContainer well">
+
+                       <div class="row">
+                        <h4 class="pull-left">
+                            {{ad.title}}
+                        </h4>
+
+                       <span class="pull-right">
+                           {{ad.date | date: "dd-MMM-yyyy"}}
+                       </span>
+
+                       <br/>
+                           </div>
+                       <div class="row">
+                       <div class="col-md-4">
+                            <img src="" ng-src="{{ad.imageDataUrl}}"/>
+                       </div>
+
+                           <div class="col-md-8">
+
+                           </div>
+                       <br/>
+                   </div>
+                   </div>
+               </li>
+           </ul>
+    </div>
+
+    <div class="col-md-3">
+
+           <div class="Towns">
+               lalala
+               lalala
+               </div>
+
     </div>
 </div>
+
