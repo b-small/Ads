@@ -12,7 +12,20 @@ body{
 	background: #D3FFF0;
 }
 
-#registerBtn {
-	align:center;
+.btn {
+	width: 100px;
+	height: 48px;
+	text-align: center;
+}
+
+div{
+	text-align: center;
+	margin-top: 10px;
 
 }
+
+#registerLogin {
+	text-align: center;
+	margin-bottom: 20px;
+}
+

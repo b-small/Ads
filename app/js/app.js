@@ -7,4 +7,7 @@ var adsApp = angular.module('adsModule', ['ngRoute'])
 				.when('/login', {
 					templateUrl: 'templates/login.html'
 				})
+				.when('/ads', {
+					templateUrl: 'templates/listAds.html'
+				})
 	});
