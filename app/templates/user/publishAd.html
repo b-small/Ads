@@ -1,23 +1,26 @@
 <div class="row">
-    <div class="col-lg-3" id="registerLogin">
-        <div class="form-group">
-            <div class="col-lg-2">
-
+    <div class="col-md-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Navigation</h3>
             </div>
-            <div class="col-lg-7">
-                <p>To publish a new ad, please login.</p>
-                <a href="#/login">
-                    <button class="btn btn-primary" id="login">Login</button>
-                </a>
-                <br/>
-                <br/>
-                <a href="#/register">
-                    <button class="btn btn-primary" id="register">Register</button>
-                </a>
+            <div class="panel-body">
+                Home
+            </div>
 
+            <div class="panel-body">
+                My Ads
+            </div>
+
+            <div class="panel-body">
+                Publish New Ad
+            </div>
+
+            <div class="panel-body">
+                Edit Profile
             </div>
         </div>
-    </div>
+
     <div class="col-lg-8">
         <form class="form-horizontal">
             <fieldset>
@@ -76,7 +79,7 @@
 
                 <div class="form-group">
                     <div class="col-lg-6">
-                        <button type="submit" class="btn btn-primary" id="registerBtn" ng-click="user.submitTheForm()">Register</button>
+                        <button type="submit" class="btn btn-primary" id="registerBtn" ng-click="myForm.submitTheForm()">Register</button>
                     </div>
                     <div class="col-lg-6">
                         <a href="#/login">Login here</a>
