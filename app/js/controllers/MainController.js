@@ -5,4 +5,12 @@ adsApp.controller('HomeController', function ($scope, homeData) {
     homeData.getAllAds(function (resp) {
         $scope.data = resp;
     });
+
+    homeData.getAllTowns(function (resp) {
+        $scope.towns = resp;
+    });
+
+    homeData.getAllCategories(function(resp) {
+       $scope.categories = resp;
+    });
 })
