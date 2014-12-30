@@ -1,60 +1,71 @@
 #header {
-	display: block;
-	padding: 5px;
-	background: #33E5C3;
-	font-size: 16pt;
-	font-weight: bold;
-	text-align: center;
-	width: 100%;
+    display: block;
+    padding: 5px;
+    background: #33E5C3;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
 }
 
-body{
-	background: #D3FFF0;
+body {
+    background: #D3FFF0;
 }
 
-div{
-	text-align: center;
-	margin-top: 10px;
-	margin-bottom: 10px;
+div {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.adText{
-	padding-bottom: 10px;
-	padding-top: 10px;
-	border: 2px solid;
-	border-color: #33E5C3;
-	border-radius: 10px;
-	background-color: #D3FFF0;
+.adText {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 2px solid;
+    border-color: #33E5C3;
+    border-radius: 10px;
+    background-color: #D3FFF0;
+}
+
+.adInfo {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 2px solid;
+    border-color: #33E5C3;
+    border-radius: 10px;
+    background-color: #D3FFF0;
+    margin: 0px;
 }
 
 img {
-	border-radius: 5px;
-	max-width: 200px;
-	max-height: 200px;
-}
-.buttons{
-	color: white;
+    border-radius: 5px;
+    max-width: 200px;
+    max-height: 200px;
 }
 
-.adContainer{
-	border: 2px solid;
-	border-color: #33E5C3;
-	border-radius: 10px;
-	background: #A2FDDB;
+.buttons {
+    color: white;
 }
 
-ul{
-	list-style-type:none;
+.adContainer {
+    border: 2px solid;
+    border-color: #33E5C3;
+    border-radius: 10px;
+    background: #A2FDDB;
+}
+
+ul {
+    list-style-type: none;
 }
 
 .btn {
-	width: 100px;
-	height: 48px;
-	text-align: center;
+    width: 100px;
+    height: 48px;
+    text-align: center;
 }
 
 #registerLogin {
-	text-align: center;
-	margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 

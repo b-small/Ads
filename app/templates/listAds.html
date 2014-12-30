@@ -6,69 +6,95 @@
             </div>
             <div class="col-lg-10">
                 <p>To publish a new ad, please login.</p>
-                <a href="#/login"><button class="btn btn-primary" id="login">Login</button></a>
+                <a href="#/login">
+                    <button class="btn btn-primary" id="login">Login</button>
+                </a>
                 <br/>
                 <br/>
-                <a href="#/register"> <button class="btn btn-primary" id="register">Register</button></a>
+                <a href="#/register">
+                    <button class="btn btn-primary" id="register">Register</button>
+                </a>
 
             </div>
         </div>
     </div>
 
     <div class="col-md-7">
+        <ul>
+            <li ng-repeat="ad in data.ads">
+                <div class="adContainer well">
 
-            <ul>
-               <li ng-repeat="ad in data.ads">
-                   <div class="adContainer well">
-
-                       <div class="row">
-                           <div class="col-md-6">
-                        <h4 class="pull-left">
-                            {{ad.title}}
-                        </h4>
-</div>
-                           <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="pull-left">
+                                {{ad.title}}
+                            </h4>
+                        </div>
+                        <div class="col-md-6">
                        <span class="pull-right">
                            {{ad.date | date: "dd-MMM-yyyy"}}
                        </span>
 
-                       <br/>
-                               </div>
-                           </div>
+                            <br/>
+                        </div>
+                    </div>
 
-                       <div class="row">
-                       <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
                             <img src="" ng-src="{{ad.imageDataUrl || 'images/noImage.png'}}"/>
-                       </div>
+                        </div>
 
-                           <div class="col-md-8">
-                                <div class="adText">
-                                    {{ad.text}}
+                        <div class="col-md-8">
+                            <div class="adText">
+                                {{ad.text}}
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Name
                                 </div>
-                                <br/>
-                               <div class="adText">
-                                   {{ad.ownerName}}
-                               </div>
-                               <div class="adText">
-                                   {{ad.ownerEmail}}
-                               </div>
-                               <div class="adText">
-                                   {{ad.ownerPhone}}
-                               </div>
-                           </div>
-                       <br/>
-                   </div>
-                   </div>
-               </li>
-           </ul>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerName}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> E-mail
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerEmail}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Phone
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerPhone}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div class="col-md-3">
 
-           <div class="Towns">
-               lalala
-               lalala
-               </div>
+        <div class="Towns">
+            lalala
+            lalala
+        </div>
 
     </div>
 </div>
