@@ -10,8 +10,8 @@ adsApp.controller('LoginController', function($scope, $http, $location) {
         var responsePromise = $http.post("http://softuni-ads.azurewebsites.net/api/user/login", dataObject, {});
         responsePromise.success(function(dataFromServer, status, headers, config) {
             console.log(dataFromServer);
-            userSession.login(dataFromServer);
-            $location.path( '/user' );
+            userAuthentication.login(dataFromServer);
+            $location.path( '/user/home' );
         });
         responsePromise.error(function(data, status, headers, config) {
             alert("Submitting form failed!");

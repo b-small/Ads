@@ -1,15 +1,15 @@
 adsApp.controller('RegisterController', function($scope, $http, $location) {
     $scope.user = {};
-    $scope.user.submitTheForm = function(item, event) {
+    $scope.user.submitTheForm = function() {
         console.log($scope.user);
         var dataObject = {
             username: $scope.user.username,
             password:$scope.user.password,
-            confirmPassword:$scope.user.password + 'a',
+            confirmPassword:$scope.user.confirmPassword,
             name:$scope.user.name,
             email:$scope.user.email,
             phone:$scope.user.phone,
-            townId:1
+            townId:$scope.user.town
         };
 
         var responsePromise = $http.post("http://softuni-ads.azurewebsites.net/api/user/register", dataObject, {});
