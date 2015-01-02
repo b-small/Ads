@@ -18,7 +18,7 @@ adsApp.factory('homeData', function ($http, $log) {
                     success(data);
                 })
                 .error(function(data, status, headers, config) {
-                    log.warn(data);
+                    $log.warn(data);
                 })
         },
 
@@ -28,7 +28,7 @@ adsApp.factory('homeData', function ($http, $log) {
                     success(data);
                 })
                 .error(function(data, status, headers, config) {
-                    log.warn(data);
+                    $log.warn(data);
                 })
         }
     }

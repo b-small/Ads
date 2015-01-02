@@ -20,69 +20,59 @@
                 Edit Profile
             </div>
         </div>
-
+    </div>
     <div class="col-lg-8">
         <form class="form-horizontal">
             <fieldset>
-                <legend>User Registration</legend>
+                <legend>Publish new ad</legend>
                 <br/>
 
                 <div class="form-group">
-                    <label for="inputUsername" class="col-lg-1 control-label">Username</label>
+                    <label for="inputTitle" class="col-lg-1 control-label">Title</label>
 
                     <div class="col-lg-4">
-                        <input type="text" ng-model="user.username" class="form-control" id="inputUsername" placeholder="Username">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="col-lg-1 control-label">Password</label>
-
-                    <div class="col-lg-4">
-                        <input type="password" ng-model="user.password" class="form-control" id="inputPassword" placeholder="Password">
-
-                    </div>
-                    <label for="confirmPassword" class="col-lg-3 control-label">Confirm Password</label>
-
-                    <div class="col-lg-4">
-                        <input type="password" ng-model="user.confirmPassword" class="form-control" id="confirmPassword" placeholder="Password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputName" class="col-lg-1 control-label">Name</label>
-
-                    <div class="col-lg-4">
-                        <input type="text" ng-model="user.name" class="form-control" id="inputName" placeholder="Name">
-                    </div>
-                    <label for="inputEmail" class="col-lg-3 control-label">E-mail</label>
-
-                    <div class="col-lg-4">
-                        <input type="text" ng-model="user.email" class="form-control" id="inputEmail" placeholder="E-mail">
+                        <input type="text" required ng-model="ad.title" class="form-control" id="inputTitle" placeholder="Title">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputPhone" class="col-lg-1 control-label">Phone</label>
+                    <label for="inputText" class="col-lg-1 control-label">Text</label>
 
                     <div class="col-lg-4">
-                        <input type="text" ng-model="user.phone" class="form-control" id="inputPhone" placeholder="Password">
-
+                        <input type="text" required ng-model="ad.text" class="form-control" id="inputText" placeholder="Text">
                     </div>
-                    <label for="inputTown" class="col-lg-3 control-label">Town</label>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="inputCategory" class="col-lg-1 control-label">Category</label>
 
                     <div class="col-lg-4">
-                        <select class="form-control" ng-model= "user.town" id="inputTown">
-                            <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                        <select class="form-control" ng-model= "ad.category" id="inputCategory">
+                            <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
                         </select>
                     </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="inputTown" class="col-lg-1 control-label">Town</label>
+
+                <div class="col-lg-4">
+                    <select class="form-control" ng-model= "ad.town" id="inputTown">
+                        <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                    </select>
+                </div>
+
                 </div>
                 <br/>
 
                 <div class="form-group">
+
                     <div class="col-lg-6">
-                        <button type="submit" class="btn btn-primary" id="registerBtn" ng-click="myForm.submitTheForm()">Register</button>
-                    </div>
-                    <div class="col-lg-6">
-                        <a href="#/login">Login here</a>
+                        <button type="button" class="btn btn-primary" id="registerBtn" ng-click="addAd(ad)">Publish
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="cancelAd()">Cancel</button>
                     </div>
                 </div>
             </fieldset>

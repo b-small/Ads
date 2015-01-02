@@ -1,4 +1,4 @@
-var adsApp = angular.module('adsModule', ['ngRoute'])
+var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute'])
     .config(function ($routeProvider) {
         $routeProvider.when('/register', {
             templateUrl: 'templates/register.html',
@@ -19,11 +19,13 @@ var adsApp = angular.module('adsModule', ['ngRoute'])
 
         //TODO
         $routeProvider.when('/user/ads/publish', {
-            templateUrl: 'templates/user/publishAd.html'
+            templateUrl: 'templates/user/publishAd.html',
+            controller: 'NewAdController'
         });
 
         $routeProvider.when('/user/ads', {
-            templateUrl: 'templates/user/myAds.html'
+            templateUrl: 'templates/user/myAds.html',
+            controller: 'UserAdsController'
         });
 
 

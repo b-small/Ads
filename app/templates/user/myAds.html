@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-md-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Navigation</h3>
+            </div>
+            <a href="/#/user/home" class="menu"><div class="panel-body">
+                Home
+            </div></a>
+
+            <a href="/#/user/ads" class="menu"> <div class="panel-body">
+                My Ads
+            </div></a>
+
+            <a href="/#/user/ads/publish" class="menu"> <div class="panel-body">
+                Publish New Ad
+            </div></a>
+
+            <a href="/#/user/profile" class="menu"> <div class="panel-body">
+                Edit Profile
+            </div></a>
+        </div>
+
+        <br/>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Navigation</h3>
+            </div>
+            <a href="/#/user/home" class="menu"><div class="panel-body">
+                All
+            </div></a>
+
+            <a href="/#/user/ads" class="menu"> <div class="panel-body">
+                Published
+            </div></a>
+
+            <a href="/#/user/ads/publish" class="menu"> <div class="panel-body">
+                Waiting Approval
+            </div></a>
+
+            <a href="/#/user/profile" class="menu"> <div class="panel-body">
+                Inactive
+            </div></a>
+
+            <a href="/#/user/profile" class="menu"> <div class="panel-body">
+                Rejected
+            </div></a>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <ul>
+            <li ng-repeat="ad in data.ads">
+                <div class="adContainer well">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="pull-left">
+                                {{ad.title}}
+                            </h4>
+                        </div>
+                        <div class="col-md-6">
+                       <span class="pull-right">
+                           {{ad.date | date: "dd-MMM-yyyy"}}
+                       </span>
+
+                            <br/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="" ng-src="{{ad.imageDataUrl || 'images/noImage.png'}}"/>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="adText">
+                                {{ad.text}}
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Name
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerName}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> E-mail
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerEmail}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Phone
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerPhone}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Categories</h3>
+            </div>
+            <div class="panel-body" ng-repeat="category in categories">
+                {{category.name}}
+            </div>
+        </div>
+        <br/>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Towns</h3>
+            </div>
+            <div class="panel-body" ng-repeat="town in towns">
+                {{town.name}}
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
