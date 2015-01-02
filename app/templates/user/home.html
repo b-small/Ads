@@ -36,7 +36,7 @@
 
     <div class="col-md-7">
         <ul>
-            <li ng-repeat="ad in data.ads">
+            <li ng-repeat="ad in filteredAds">
                 <div class="adContainer well">
 
                     <div class="row">
@@ -101,6 +101,7 @@
                     </div>
                 </div>
             </li>
+            <pagination total-items="totalItems" class="main" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged()"></pagination>
         </ul>
     </div>
 

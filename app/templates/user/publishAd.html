@@ -4,24 +4,37 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Navigation</h3>
             </div>
-            <div class="panel-body">
-                Home
-            </div>
 
-            <div class="panel-body">
-                My Ads
-            </div>
+            <a href="/#/user/home" class="menu">
+                <div class="panel-body">
+                    Home
+                </div>
+            </a>
 
-            <div class="panel-body">
-                Publish New Ad
-            </div>
+            <a href="/#/user/ads" class="menu">
+                <div class="panel-body">
+                    My Ads
+                </div>
+            </a>
 
-            <div class="panel-body">
-                Edit Profile
-            </div>
+            <a href="/#/user/ads/publish" class="menu">
+                <div class="panel-body">
+                    Publish New Ad
+                </div>
+            </a>
+
+            <a href="/#/user/profile" class="menu">
+                <div class="panel-body">
+                    Edit Profile
+                </div>
+            </a>
+
+            //TODO Logout
+
         </div>
     </div>
-    <div class="col-lg-8">
+
+    <div class="col-md-7">
         <form class="form-horizontal">
             <fieldset>
                 <legend>Publish new ad</legend>
@@ -31,7 +44,7 @@
                     <label for="inputTitle" class="col-lg-1 control-label">Title</label>
 
                     <div class="col-lg-4">
-                        <input type="text" required ng-model="ad.title" class="form-control" id="inputTitle" placeholder="Title">
+                        <input type="text" ng-model="ad.title" class="form-control" id="inputTitle" placeholder="Title">
                     </div>
                 </div>
 
@@ -39,7 +52,7 @@
                     <label for="inputText" class="col-lg-1 control-label">Text</label>
 
                     <div class="col-lg-4">
-                        <input type="text" required ng-model="ad.text" class="form-control" id="inputText" placeholder="Text">
+                        <input type="text" ng-model="ad.text" class="form-control" id="inputText" placeholder="Text">
                     </div>
                 </div>
 
@@ -48,7 +61,7 @@
                     <label for="inputCategory" class="col-lg-1 control-label">Category</label>
 
                     <div class="col-lg-4">
-                        <select class="form-control" ng-model= "ad.category" id="inputCategory">
+                        <select class="form-control" ng-model= "ad.categoryId" id="inputCategory">
                             <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
                         </select>
                     </div>
@@ -59,7 +72,7 @@
                     <label for="inputTown" class="col-lg-1 control-label">Town</label>
 
                 <div class="col-lg-4">
-                    <select class="form-control" ng-model= "ad.town" id="inputTown">
+                    <select class="form-control" ng-model= "ad.townId" id="inputTown">
                         <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
                     </select>
                 </div>
@@ -77,5 +90,29 @@
                 </div>
             </fieldset>
         </form>
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Categories</h3>
+            </div>
+            <div class="panel-body" ng-repeat="category in categories">
+                {{category.name}}
+            </div>
+        </div>
+        <br/>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Towns</h3>
+            </div>
+            <div class="panel-body" ng-repeat="town in towns">
+                {{town.name}}
+            </div>
+
+        </div>
+
     </div>
 </div>
