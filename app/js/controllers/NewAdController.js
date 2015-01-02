@@ -8,7 +8,9 @@ adsApp.controller('NewAdController', function($scope, $http, $location, $log, ad
 			title: $scope.ad.title,
 			text: $scope.ad.text,
 			categoryId: $scope.ad.categoryId,
-			townId: $scope.ad.townId
+			townId: $scope.ad.townId,
+			categoryName: $scope.ad.categoryName,
+			townName: $scope.ad.townName
 		};
 
 		adsData.create(dataObject)
