@@ -5,7 +5,7 @@ adsApp.controller('UserAdsController', function($scope, adsData, $log, $http) {
 
 	responsePromise.success(function(dataFromServer) {
 		$scope.data = dataFromServer;
-
+ 		$scope.filters = { };
 		//pagination
 		$scope.totalItems = $scope.data.ads.length;
 		$scope.currentPage = 1;
@@ -21,6 +21,7 @@ adsApp.controller('UserAdsController', function($scope, adsData, $log, $http) {
 
 			$scope.filteredAds = $scope.data.ads.slice(begin, end);
 		});
+
 		//end pagination
 	});
 

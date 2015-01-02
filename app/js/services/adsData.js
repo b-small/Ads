@@ -32,11 +32,20 @@ adsApp.factory('adsData', function ($resource, $http) {
         return resource.delete({id: id});
     }
 
+    function defineButton(ad) {
+        if(ad.status != "Inactive") {
+            document.getElementById("deactivateBtn").value = "Deactivate";
+        } else {
+            document.getElementById("deactivateBtn").value = "Activate";
+        }
+    }
+
     return {
         getAll: getAllAds,
         create: createNewAd,
         getById: getAdById,
         edit: editAd,
-        delete: deleteAd
+        delete: deleteAd,
+        defineButton: defineButton
     }
 });

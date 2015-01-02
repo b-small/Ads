@@ -21,7 +21,7 @@
 
     <div class="col-md-7">
         <ul ng-controller="HomeController">
-            <li ng-repeat="ad in filteredAds">
+            <li ng-repeat="ad in filteredAds | filter: byCategory">
                 <div class="adContainer well">
 
                     <div class="row">
@@ -101,11 +101,11 @@
     <div class="col-md-3">
 
         <div class="panel panel-primary">
-            <div class="panel-heading">
+            <div class="panel-heading" >
                 <h3 class="panel-title">Categories</h3>
             </div>
-            <div class="panel-body" ng-repeat="category in categories">
-                {{category.name}}
+           <div class="panel-body" ng-repeat="category in categories">
+           <a ng-click="setSelectedCategory(category.id)">{{category.name}} </a>
             </div>
         </div>
         <br/>
@@ -116,6 +116,7 @@
             </div>
             <div class="panel-body" ng-repeat="town in towns">
                 {{town.name}}
+
             </div>
 
         </div>
