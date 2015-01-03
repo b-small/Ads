@@ -29,15 +29,16 @@
                 </div>
             </a>
 
-//TODO Logout
+            //TODO Logout
 
         </div>
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-8">
         <ul>
-            <li ng-repeat="ad in data.ads">
+            <li>
                 <div class="adContainer well">
+                    <h4>Confirm deleting ad?</h4>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -67,67 +68,40 @@
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    <br/> Name
+                                    <br/> Town
                                 </div>
                                 <div class="col-md-10">
                                     <div class="adInfo">
-                                        {{ad.ownerName}}
+                                        {{ad.townName}}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-2">
-                                    <br/> E-mail
+                                    <br/> Category
                                 </div>
                                 <div class="col-md-10">
                                     <div class="adInfo">
-                                        {{ad.ownerEmail}}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <br/> Phone
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="adInfo">
-                                        {{ad.ownerPhone}}
+                                        {{ad.categoryName}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </li>
-            <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged(currentPage)"></pagination>
+                <div class="form-group">
 
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-primary" id="registerBtn" ng-click="deleteAd()">Delete
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="cancelAd()">Cancel</button>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 
-    <div class="col-md-3">
 
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Categories</h3>
-            </div>
-            <div class="panel-body" ng-repeat="category in categories">
-                {{category.name}}
-            </div>
-        </div>
-        <br/>
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Towns</h3>
-            </div>
-            <div class="panel-body" ng-repeat="town in towns">
-                {{town.name}}
-            </div>
-
-        </div>
-
-    </div>
 </div>
 

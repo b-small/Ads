@@ -3,15 +3,20 @@
  */
 adsApp.controller('HomeController', function ($scope, homeData) {
 
-        homeData.getResultsPage(1, function(resp) {
+    var selCat;
+    var selTown;
+
+ var doIt = function() {
+        homeData.getResultsPage(1, selTown, selCat, function (resp) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
+            console.log($scope.totalAds);
             $scope.itemsPerPage = 5;
         });
+    };
 
-
-    $scope.pageChanged = function(newPage) {
-        homeData.getResultsPage(newPage, function(resp) {
+    $scope.pageChanged = function (newPage) {
+        homeData.getResultsPage(newPage, $scope.selectedTown, $scope.selectedCategory, function (resp) {
             $scope.data = resp;
         });
     };
@@ -20,21 +25,37 @@ adsApp.controller('HomeController', function ($scope, homeData) {
         $scope.towns = resp;
     });
 
-    homeData.getAllCategories(function(resp) {
-       $scope.categories = resp;
+    homeData.getAllCategories(function (resp) {
+        $scope.categories = resp;
     });
 
     $scope.setSelectedCategory = function (value) {
         if ($scope.selectedCategory === value) {
             $scope.selectedCategory = undefined;
+
         } else {
             $scope.selectedCategory = value;
         }
+        selCat = $scope.selectedCategory;
+        doIt();
     };
 
+    $scope.setSelectedTown = function (town) {
+        if ($scope.selectedTown === town) {
+            $scope.selectedTown = undefined;
+        } else {
+            $scope.selectedTown = town;
+        }
+        selTown = $scope.selectedTown;
+       doIt();
+    };
 
-    $scope.byCategory = function(entry){
+    $scope.byCategory = function (entry) {
         return entry.categoryId === $scope.selectedCategory || $scope.selectedCategory === undefined;
+    };
+
+    $scope.byTown = function (entry) {
+        return entry.townId === $scope.selectedTown || $scope.selectedTown === undefined;
     };
 
 });

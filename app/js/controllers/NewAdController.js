@@ -1,9 +1,8 @@
-adsApp.controller('NewAdController', function($scope, $http, $location, $log, adsData) {
+adsApp.controller('NewAdController', function($scope, $http, adsData) {
 	$scope.ad = {};
+	$http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
 
 	$scope.addAd = function() {
-		$http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
-
 		var dataObject = {
 			title: $scope.ad.title,
 			text: $scope.ad.text,
@@ -11,6 +10,7 @@ adsApp.controller('NewAdController', function($scope, $http, $location, $log, ad
 			townId: $scope.ad.townId,
 			categoryName: $scope.ad.categoryName,
 			townName: $scope.ad.townName
+
 		};
 
 		adsData.create(dataObject)

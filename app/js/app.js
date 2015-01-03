@@ -35,6 +35,11 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
 
         });
 
+        $routeProvider.when('/delete/:adId', {
+            templateUrl: 'templates/user/deleteAd.html',
+            controller: 'DelAdController'
+        });
+
         $routeProvider.otherwise({redirectTo: '/ads'});
 
     });

@@ -27,7 +27,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Navigation</h3>
             </div>
-            <a class="menu"><div class="panel-body">
+            <a class="menu"><div class="panel-body" >
                 All
             </div></a>
 
@@ -51,7 +51,7 @@
 
     <div class="col-md-7">
         <ul ng-controller="UserAdsController">
-            <li ng-repeat="ad in filteredAds | filter: filters">
+            <li ng-repeat="ad in data.ads | filter: filters">
                 <div class="adContainer well">
 
                     <div class="row">
@@ -73,6 +73,9 @@
                         <div class="col-md-4">
                             <img src="" ng-src="{{ad.imageDataUrl || 'images/noImage.png'}}"/>
 
+                            <br/> <br/>
+
+                            <a type="submit" href="/#/delete/{{ad.id}}"><button type="button" class="btn btn-primary" id="registerBtn">Delete</button></a>
                         </div>
 
                         <div class="col-md-8">
@@ -117,7 +120,7 @@
                     </div>
                 </div>
             </li>
-            <pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged()"></pagination>
+            <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged(currentPage)"></pagination>
         </ul>
     </div>
 
