@@ -3,8 +3,9 @@
  */
 adsApp.factory('homeData', function ($http, $log) {
     return {
+        //TODO
         getAllAds: function (success, townId, categoryId) {
-            $http({method:'GET', url:'http://softuni-ads.azurewebsites.net/api/ads'})
+            $http({method:'GET', url:'http://softuni-ads.azurewebsites.net/api/ads?townId='+townId+'&categoryId=' + categoryId})
                 .success(function(data, status, headers, config) {
                 success(data);
             })
