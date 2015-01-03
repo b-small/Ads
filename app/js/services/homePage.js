@@ -26,8 +26,14 @@ adsApp.factory('homeData', function ($http, $log) {
 
 
 
-        getAllUserAds: function(startPage, success) {
-            $http({method:'GET', url:'http://softuni-ads.azurewebsites.net/api/user/ads?pagesize=5&startpage=' + startPage})
+        getAllUserAds: function(adStatus, startPage, success) {
+            var toAdd = '';
+            if (adStatus != undefined ) {
+                toAdd += 'status=' + adStatus + '&';
+            }
+            console.log("homePage stat " + adStatus);
+
+            $http({method:'GET', url:'http://softuni-ads.azurewebsites.net/api/user/ads?'+ toAdd + 'pagesize=5&startpage=' + startPage})
                 .success(function(data, status, headers, config) {
                     console.log(startPage);
                     success(data);

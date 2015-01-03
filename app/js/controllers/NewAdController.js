@@ -1,6 +1,22 @@
-adsApp.controller('NewAdController', function($scope, $http, adsData) {
+adsApp.controller('NewAdController', function($scope, $http, adsData, $log, $location) {
 	$scope.ad = {};
 	$http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
+
+	$scope.fileSelected = function(fileInputField) {
+		console.log(fileInputField.files[0]);
+		//delete $scope.adData.imageDataUrl;
+		var file = fileInputField.files[0];
+		if (file.type.match(/image\/.*/)) {
+			var reader = new FileReader();
+			reader.onload = function() {
+				$scope.ad.imageDataUrl = reader.result;
+				$(".image-box").html("<img src='" + reader.result + "'>");
+			};
+			reader.readAsDataURL(file);
+		} else {
+			$(".image-box").html("<p>File type not supported!</p>");
+		}
+	}
 
 	$scope.addAd = function() {
 		var dataObject = {
@@ -9,7 +25,8 @@ adsApp.controller('NewAdController', function($scope, $http, adsData) {
 			categoryId: $scope.ad.categoryId,
 			townId: $scope.ad.townId,
 			categoryName: $scope.ad.categoryName,
-			townName: $scope.ad.townName
+			townName: $scope.ad.townName,
+			imageDataUrl: $scope.ad.imageDataUrl
 
 		};
 
