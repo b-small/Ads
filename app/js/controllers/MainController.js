@@ -3,33 +3,18 @@
  */
 adsApp.controller('HomeController', function ($scope, homeData) {
 
-    homeData.getAllAds(function (resp) {
-
-        $scope.data = resp;
-
-        doPagination($scope.data);
-    });
-
-   var doPagination = (function(resp) {
+        homeData.getResultsPage(1, function(resp) {
             $scope.data = resp;
-        //pagination
-        $scope.totalItems = $scope.data.numItems;
-        $scope.currentPage = 1;
-        $scope.itemsPerPage = 5;
-
-        $scope.pageCount = function () {
-            return Math.ceil($scope.totalItems / $scope.itemsPerPage);
-        };
-
-
-        $scope.$watch( 'currentPage + itemsPerPage', function() {
-            var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
-                end = begin + $scope.itemsPerPage;
-
-            $scope.filteredAds = $scope.data.ads.slice(begin, end);
-
+            $scope.totalAds = $scope.data.numItems;
+            $scope.itemsPerPage = 5;
         });
-    });
+
+
+    $scope.pageChanged = function(newPage) {
+        homeData.getResultsPage(newPage, function(resp) {
+            $scope.data = resp;
+        });
+    };
 
     homeData.getAllTowns(function (resp) {
         $scope.towns = resp;
@@ -46,6 +31,7 @@ adsApp.controller('HomeController', function ($scope, homeData) {
             $scope.selectedCategory = value;
         }
     };
+
 
     $scope.byCategory = function(entry){
         return entry.categoryId === $scope.selectedCategory || $scope.selectedCategory === undefined;
