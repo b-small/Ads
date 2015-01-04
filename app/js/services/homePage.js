@@ -24,8 +24,6 @@ adsApp.factory('homeData', function ($http, $log) {
                 })
         },
 
-
-
         getAllUserAds: function(adStatus, startPage, success) {
             var toAdd = '';
             if (adStatus != undefined ) {

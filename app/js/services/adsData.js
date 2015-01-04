@@ -7,10 +7,31 @@ adsApp.factory('adsData', function ($resource, $http) {
     var resource = $resource(
         'http://softuni-ads.azurewebsites.net/api/user/ads/:id',
         {id: '@id'},
-        { update: {
-            method: 'PUT'
-        }
+        {
+            update: {
+                method: 'PUT'
+            }
         });
+
+    var deactivateResource = $resource(
+        'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/:id',
+        {id: '@id'}, {
+            update: {
+                method: 'PUT'
+            }
+        }
+
+    );
+
+    var publishAgainResource = $resource(
+        'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/:id',
+        {id: '@id'},
+        {
+            update: {
+                method: 'PUT'
+            }
+        }
+    );
 
     function getAllAds() {
         return resource.get();
@@ -32,12 +53,12 @@ adsApp.factory('adsData', function ($resource, $http) {
         return resource.delete({id: id});
     }
 
-    function defineButton(ad) {
-        if(ad.status != "Inactive") {
-            document.getElementById("deactivateBtn").value = "Deactivate";
-        } else {
-            document.getElementById("deactivateBtn").value = "Activate";
-        }
+    function deactivateAd(id) {
+        return deactivateResource.update({id: id});
+    }
+
+    function publishAgainAd(id){
+        return publishAgainResource.update({id:id});
     }
 
     return {
@@ -46,6 +67,7 @@ adsApp.factory('adsData', function ($resource, $http) {
         getById: getAdById,
         edit: editAd,
         delete: deleteAd,
-        defineButton: defineButton
+        deactivate: deactivateAd,
+        publishAgain: publishAgainAd
     }
 });
