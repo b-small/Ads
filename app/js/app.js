@@ -2,21 +2,18 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
     .config(function ($routeProvider) {
         $routeProvider.when('/register', {
             templateUrl: 'templates/register.html',
-            controller: 'RegisterController',
-            resolve: {loginNotRequired: loginNotRequired}
+            controller: 'RegisterController'
         });
 
         $routeProvider.when('/login', {
             templateUrl: 'templates/login.html',
-            controller: 'LoginController',
-            resolve: {loginNotRequired: loginNotRequired}
+            controller: 'LoginController'
 
         });
 
         $routeProvider.when('/ads', {
             templateUrl: 'templates/listAds.html',
-            controller: 'HomeController',
-            resolve: {loginNotRequired: loginNotRequired}
+            controller: 'HomeController'
         });
 
         $routeProvider.when('/user/home', {
@@ -29,7 +26,7 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
         $routeProvider.when('/user/ads/publish', {
             templateUrl: 'templates/user/publishAd.html',
             controller: 'UserAdsController',
-            resolve: {loginRequired: loginRequired}
+         resolve: {loginRequired: loginRequired}
 
         });
 
@@ -43,7 +40,7 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
         $routeProvider.when('/delete/:adId', {
             templateUrl: 'templates/user/deleteAd.html',
             controller: 'DelAdController',
-            resolve: {loginRequired: loginRequired}
+           resolve: {loginRequired: loginRequired}
         });
 
         $routeProvider.when('/edit/:adId', {
@@ -54,7 +51,7 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
 
         $routeProvider.when('/user/profile', {
             templateUrl: 'templates/user/editUserProfile.html',
-            controller: 'DelAdController',
+            controller: 'EditUserProfileController',
             resolve: {loginRequired: loginRequired}
         });
 
@@ -78,18 +75,6 @@ var loginRequired = function ($location, $q) {
     return deferred.promise;
 };
 
-var loginNotRequired = function ($location, $q) {
-    var deferred = $q.defer();
-
-    if (userAuthentication.getCurrentUser()) {
-        deferred.reject();
-        $location.path('/user');
-    } else {
-        deferred.resolve()
-    }
-
-    return deferred.promise;
-};
 
 var adminRequired = function ($location, $q) {
     var deferred = $q.defer();
@@ -105,4 +90,4 @@ var adminRequired = function ($location, $q) {
     }
 
     return deferred.promise;
-}
+};

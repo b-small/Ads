@@ -38,77 +38,79 @@
         </div>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-8">
 
         <form class="form-horizontal">
             <fieldset>
-                <legend>Edit ad</legend>
                 <br/>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <legend>Edit Profile</legend>
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4">
+                        <legend>   Change Password</legend>
+                    </div>
+                </div>
 
                 <div class="form-group">
-                    <div class="col-lg-1">
-                        <label for="inputTitle" class="control-label">Title</label>
-                        <br/> <br/> <br/>
-                        <label class="control-label">Text</label>
+                    <div class="row">
 
-                    </div>
-                    <div class="col-lg-4">
-                        <input type="text" ng-model="ad.title" class="form-control" id="inputTitle">
-                        <br/>
-                        <textarea class="form-control" ng-model="ad.text" rows="4" id="textArea"></textarea>
-                        <br/>
+                        <div class="col-lg-1">
 
-                    </div>
+                            <label for="inputName" class="editLabel">Name</label>
 
-                    <div class="col-lg-4">
+                            <label for="inputEmail" class="editLabel">E-mail</label>
 
-                        <div class="image-box">
+                            <label for="inputPhone" class="editLabel">Phone</label>
+
+                            <label for="inputTown" class="editLabel">Town</label>
 
                         </div>
+                        <div class="col-lg-4">
 
+                            <input type="text" ng-model="user.name" class="form-control" id="inputName">
+                            <br/>
+                            <input type="text" ng-model="user.email" class="form-control" id="inputEmail">
+                            <br/>
+                            <input type="text" ng-model="user.phoneNumber" class="form-control" id="inputPhone">
+                            <br/>
+                            <select class="form-control" ng-model="user.townId" id="inputTown">
+                                <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                            </select>
+                            <br/>
+                            <button type="button" class="btn btn-primary" id="registerBtn" ng-click="editUserProfile(user)">Update
+                            </button>
+                            <a href="/#/user/ads">
+                                <button type="button" class="btn btn-primary">Cancel</button>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <label for="inputPassword" class="editLabel">Old password</label>
+                            <br/>
+                            <label for="inputNewPassword" class="editLabel">New password</label>
+                            <label for="confirmNewPassword" class="editLabel">Confirm new password</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="password" ng-model="user.oldPass" class="form-control" id="inputPassword">
+                            <br/>
+                            <input type="password" ng-model="user.newPass" class="form-control" id="inputNewPassword">
+                            <br/>
+                            <input type="password" ng-model="user.confPass" class="form-control" id="confirmNewPassword">
+
+                            <br/>
+                            <button type="button" class="btn btn-default" ng-click="changePass()">Change Password
+                            </button>
+                            <a href="/#/user/ads">
+                                <button type="button" class="btn btn-primary">Cancel</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-
-                    <label class="col-lg-1 control-label">Image</label>
-                    <div class="col-lg-5 imageInput">  <input type="file" id="image"
-                                                              onchange="angular.element(this).scope().fileSelected(this)"/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputCategory" class="col-lg-1 control-label">Category</label>
-
-                    <div class="col-lg-8">
-                        <select class="form-control" ng-model="ad.categoryId" id="inputCategory">
-                            <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}
-                            </option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label for="inputTown" class="col-lg-1 control-label">Town</label>
-
-                    <div class="col-lg-8">
-                        <select class="form-control" ng-model="ad.townId" id="inputTown">
-                            <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
-                        </select>
-                    </div>
-
-                </div>
                 <br/>
 
-                <div class="form-group">
-
-                    <div class="col-lg-6">
-                        <button type="button" class="btn btn-primary" id="registerBtn" ng-click="editAd(ad)">Edit
-                        </button>
-                        <a href="/#/user/ads"><button type="button" class="btn btn-primary">Cancel</button> </a>
-                    </div>
-                </div>
             </fieldset>
         </form>
     </div>
