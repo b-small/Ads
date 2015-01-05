@@ -15,14 +15,6 @@ adsApp.factory('userData', function ($resource, $http) {
             }
         }
     );
-    var passwordResource = $resource(
-        'http://softuni-ads.azurewebsites.net/api/user/changePassword',
-        {
-            update: {
-                method: 'PUT'
-            }
-        }
-    );
 
     function getUserProfile() {
         return resource.get();

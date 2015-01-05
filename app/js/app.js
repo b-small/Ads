@@ -2,13 +2,12 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
     .config(function ($routeProvider) {
         $routeProvider.when('/register', {
             templateUrl: 'templates/register.html',
-            controller: 'RegisterController'
+            controller: 'LoginRegisterController'
         });
 
         $routeProvider.when('/login', {
             templateUrl: 'templates/login.html',
-            controller: 'LoginController'
-
+            controller: 'LoginRegisterController'
         });
 
         $routeProvider.when('/ads', {

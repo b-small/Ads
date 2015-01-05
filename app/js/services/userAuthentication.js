@@ -10,6 +10,7 @@ var userAuthentication = {
             return JSON.parse(sessionStorage['currentUser']);
         }
     },
+
     logout : function() {
         delete sessionStorage['currentUser'];
     }

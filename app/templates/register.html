@@ -47,7 +47,7 @@
                     <label for="inputPhone" class="col-lg-1 control-label">Phone</label>
 
                     <div class="col-lg-4">
-                        <input type="text" ng-model="user.phone" class="form-control" id="inputPhone" placeholder="Password">
+                        <input type="text" ng-model="user.phone" class="form-control" id="inputPhone" placeholder="Phone">
 
                     </div>
                     <label for="inputTown" class="col-lg-3 control-label">Town</label>
@@ -62,7 +62,7 @@
 
                 <div class="form-group">
                     <div class="col-lg-6">
-                        <button type="submit" class="btn btn-primary" id="registerBtn" ng-click="user.submitTheForm()">Register</button>
+                        <button type="submit" class="btn btn-primary" id="registerBtn" ng-click="register(user)">Register</button>
                     </div>
                     <div class="col-lg-6">
                         <a href="#/login">Login here</a>
