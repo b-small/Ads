@@ -16,7 +16,7 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
         });
 
         $routeProvider.when('/user/home', {
-            templateUrl: 'templates/user/home.html',
+            templateUrl: 'templates/listAds.html',
             controller: 'HomeController',
             resolve: {loginRequired: loginRequired}
 

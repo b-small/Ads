@@ -5,6 +5,7 @@ adsApp.controller('HomeController', function ($scope, homeData) {
 
     var selCat;
     var selTown;
+
     $scope.user = userAuthentication.getCurrentUser();
 
     $scope.status = {

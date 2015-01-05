@@ -30,11 +30,6 @@ adsApp.controller('LoginRegisterController', function($scope, $http, $location, 
             townId:$scope.user.town
         };
 
-        var forLogin = {
-            username: dataObject.username,
-            password: dataObject.password
-        };
-
         var responsePromise = loginRegister.register(user);
         responsePromise.success(function(dataFromServer, status, headers, config) {
             userAuthentication.login(dataFromServer);
