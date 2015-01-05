@@ -1,9 +1,10 @@
 adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $http, $log, $location) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
     var responsePromise = adsData.getAll();
-
     var selStat;
-
+    $scope.status = {
+        open: false
+    };
     var doIt = function () {
         homeData.getAllUserAds(selStat, 1, function (resp) {
             $scope.data = resp;

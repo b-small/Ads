@@ -1,41 +1,10 @@
+<div ng-include="'templates/user/userHeader.html'"></div>
 <div class="row">
+    <br/>
+    <br/>
+    <br/>
     <div class="col-md-2">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Navigation</h3>
-            </div>
 
-            <a href="/#/user/home" class="menu">
-                <div class="panel-body">
-                    Home
-                </div>
-            </a>
-
-            <a href="/#/user/ads" class="menu">
-                <div class="panel-body">
-                    My Ads
-                </div>
-            </a>
-
-            <a href="/#/user/ads/publish" class="menu">
-                <div class="panel-body">
-                    Publish New Ad
-                </div>
-            </a>
-
-            <a href="/#/user/profile" class="menu">
-                <div class="panel-body">
-                    Edit Profile
-                </div>
-            </a>
-
-            <a href="/#/ads" onclick="userAuthentication.logout()">
-                <div class="panel-body">
-                    Logout
-                </div>
-            </a>
-
-        </div>
     </div>
 
     <div class="col-md-8">
@@ -100,7 +69,7 @@
                             <input type="password" ng-model="user.confPass" class="form-control" id="confirmNewPassword">
 
                             <br/>
-                            <button type="button" class="btn btn-default" ng-click="changePass()">Change Password
+                            <button type="button" class="btn btn-default" ng-click="changePass(user)">Change Password
                             </button>
                             <a href="/#/user/ads">
                                 <button type="button" class="btn btn-primary">Cancel</button>

@@ -5,8 +5,13 @@ adsApp.controller('HomeController', function ($scope, homeData) {
 
     var selCat;
     var selTown;
+    $scope.user = userAuthentication.getCurrentUser();
 
- var doIt = function() {
+    $scope.status = {
+        open: false
+    };
+
+    var doIt = function () {
         homeData.getResultsPage(1, selTown, selCat, function (resp) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
@@ -47,7 +52,7 @@ adsApp.controller('HomeController', function ($scope, homeData) {
             $scope.selectedTown = town;
         }
         selTown = $scope.selectedTown;
-       doIt();
+        doIt();
     };
 
     $scope.byCategory = function (entry) {

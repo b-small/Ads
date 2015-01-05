@@ -15,6 +15,14 @@ adsApp.factory('userData', function ($resource, $http) {
             }
         }
     );
+    var passwordResource = $resource(
+        'http://softuni-ads.azurewebsites.net/api/user/changePassword',
+        {
+            update: {
+                method: 'PUT'
+            }
+        }
+    );
 
     function getUserProfile() {
         return resource.get();
@@ -24,10 +32,8 @@ adsApp.factory('userData', function ($resource, $http) {
         return $http.put("http://softuni-ads.azurewebsites.net/api/user/profile", user);
     }
 
-    function changePassword(oldPass, newPass, confirmPass){
-
-            $http.put('http://softuni-ads.azurewebsites.net/api/user/changePassword', oldPass, newPass, confirmPass);
-
+    function changePassword(password){
+        return $http.put('http://softuni-ads.azurewebsites.net/api/user/changePassword', password);
     }
 
     return {

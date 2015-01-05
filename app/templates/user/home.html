@@ -1,42 +1,11 @@
+<div ng-include="'templates/user/userHeader.html'"></div>
 <div class="row">
-    <div class="col-md-2">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Navigation</h3>
-            </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="col-md-3" ng-include="'templates/catsAndTowns.html'"></div>
 
-            <a href="/#/user/home" class="menu">
-                <div class="panel-body">
-                    Home
-                </div>
-            </a>
-
-            <a href="/#/user/ads" class="menu">
-                <div class="panel-body">
-                    My Ads
-                </div>
-            </a>
-
-            <a href="/#/user/ads/publish" class="menu">
-                <div class="panel-body">
-                    Publish New Ad
-                </div>
-            </a>
-
-            <a href="/#/user/profile" class="menu">
-                <div class="panel-body">
-                    Edit Profile
-                </div>
-            </a>
-
-            <a href="/#/ads" onclick="userAuthentication.logout()">
-                <div class="panel-body">
-                    Logout
-                </div>
-            </a>
-
-        </div>
-    </div>
+    <div class="col-md-1"></div>
 
     <div class="col-md-7">
         <ul>
@@ -109,35 +78,5 @@
                         ng-change="pageChanged(currentPage)"></pagination>
 
         </ul>
-    </div>
-
-    <div class="col-md-3" ng-init="setSelectedCategory()">
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Categories</h3>
-            </div>
-            <div class="panel-body">
-                <a ng-click="setSelectedCategory()" class="default"> All </a>
-            </div>
-            <div class="panel-body" ng-repeat="category in categories">
-                <a ng-click="setSelectedCategory(category.id)">{{category.name}} </a>
-            </div>
-        </div>
-        <br/>
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Towns</h3>
-            </div>
-            <div class="panel-body">
-                <a ng-click="setSelectedTown()"> All </a>
-            </div>
-            <div class="panel-body" ng-repeat="town in towns">
-                <a ng-click="setSelectedTown(town.id)"> {{town.name}}</a>
-
-            </div>
-
-        </div>
     </div>
 </div>

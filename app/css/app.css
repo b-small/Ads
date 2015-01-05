@@ -1,4 +1,4 @@
-#header {
+/*#header {
     display: block;
     padding: 5px;
     background: #33E5C3;
@@ -6,7 +6,7 @@
     font-weight: bold;
     text-align: center;
     width: 100%;
-}
+}*/
 
 body {
     background: #D3FFF0;
@@ -16,6 +16,32 @@ div {
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.header {
+    color: white;
+    background: #2c3e50;
+}
+
+.navbar-fixed-top, .panel-group, .panel, .panel-heading, .panel-title, .panel-default, .panel-default>.panel-heading {
+    background: #2c3e50;
+    color:white;
+}
+
+.navbar-fixed-top {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    height: 20px;
+}
+
+.panel-collapse>.panel-body {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    border: 0px;
+}
+
+span{
+    color: black;
 }
 
 .adText {
