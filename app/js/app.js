@@ -54,6 +54,11 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
             resolve: {loginRequired: loginRequired}
         });
 
+        $routeProvider.when('/admin/home', {
+            templateUrl: 'templates/admin/adminHome.html',
+            controller: 'AdminAdsController'
+        });
+
         $routeProvider.otherwise({redirectTo: '/ads'});
 
     });
@@ -78,7 +83,7 @@ var loginRequired = function ($location, $q) {
 var adminRequired = function ($location, $q) {
     var deferred = $q.defer();
 
-    if (userSession.getCurrentUser() && userSession.getCurrentUser().isAdmin) {
+    if (userAuthentication.getCurrentUser() && userAuthentication.getCurrentUser().isAdmin) {
         deferred.resolve();
     } else {
         deferred.reject();

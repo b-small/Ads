@@ -2,10 +2,14 @@ adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $htt
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
     var responsePromise = adsData.getAll();
     var selStat;
+
+    $scope.user = userAuthentication.getCurrentUser();
+
     $scope.status = {
         open: false
     };
     var doIt = function () {
+
         homeData.getAllUserAds(selStat, 1, function (resp) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;

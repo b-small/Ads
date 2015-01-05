@@ -5,6 +5,8 @@ adsApp.controller('DelAdController', function ($scope, $http, $routeParams, $loc
 
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
 
+    $scope.user = userAuthentication.getCurrentUser();
+
     $scope.status = {
         open: false
     };

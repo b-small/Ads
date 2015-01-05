@@ -1,10 +1,11 @@
-adsApp.controller('LoginRegisterController', function($scope, $http, $location, loginRegister, $resource) {
-    $scope.user = {};
+adsApp.controller('LoginRegisterController', function($scope, $http, $location, loginRegister) {
+    $scope.userLog = {};
+
     $scope.login = function(user) {
-        console.log($scope.user);
+        console.log($scope.userLog);
         var dataObject = {
-            username: $scope.user.username,
-            password:$scope.user.password
+            username: $scope.userLog.username,
+            password:$scope.userLog.password
         };
 
         var responsePromise = loginRegister.login(dataObject);
@@ -19,15 +20,15 @@ adsApp.controller('LoginRegisterController', function($scope, $http, $location, 
     };
 
     $scope.register = function(user) {
-        console.log($scope.user);
+        console.log($scope.userLog);
         var dataObject = {
-            username: $scope.user.username,
-            password:$scope.user.password,
-            confirmPassword:$scope.user.confirmPassword,
-            name:$scope.user.name,
-            email:$scope.user.email,
-            phone:$scope.user.phone,
-            townId:$scope.user.town
+            username: $scope.userLog.username,
+            password:$scope.userLog.password,
+            confirmPassword:$scope.userLog.confirmPassword,
+            name:$scope.userLog.name,
+            email:$scope.userLog.email,
+            phone:$scope.userLog.phone,
+            townId:$scope.userLog.town
         };
 
         var responsePromise = loginRegister.register(user);

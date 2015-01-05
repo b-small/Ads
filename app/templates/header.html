@@ -1,55 +1,83 @@
 <div class="navbar-collapse collapse navbar-responsive-collapse">
-        <accordion class="navbar-fixed-top">
-            <accordion-group>
-                <accordion-heading>
-                    <p class="header"> Home
-                        <i class="pull-right" ng-controller="HomeController">{{user.username}}</i>
-                        <i class="pull-right glyphicon"
-                                               ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                    </p>
-                </accordion-heading>
-                <a href="#/login">
-                    <div class="panel-body" ng-show="!user.username">
-                        Login
-                    </div>
-                </a>
-                <a href="#/register" ng-show="!user.username">
-                    <div class="panel-body">
-                        Register
-                    </div>
-                </a>
+    <accordion class="navbar-fixed-top">
+        <accordion-group>
+            <accordion-heading>
+                <p class="header"> Home
+                    <i class="pull-right">{{user.username}}</i>
 
-                <a href="/#/user/home" class="menu" ng-show="user.username">
-                    <div class="panel-body">
-                        Home
-                    </div>
-                </a>
+                    <i class="pull-right glyphicon"
+                       ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 
-                <a href="/#/user/ads" class="menu" ng-show="user.username">
-                    <div class="panel-body">
-                        My Ads
-                    </div>
-                </a>
+                </p>
 
-                <a href="/#/user/ads/publish" class="menu" ng-show="user.username">
-                    <div class="panel-body">
-                        Publish New Ad
-                    </div>
-                </a>
+            </accordion-heading>
+            <a href="#/login">
+                <div class="panel-body" ng-show="!user.username">
+                    Login
+                </div>
+            </a>
+            <a href="#/register" ng-show="!user.username">
+                <div class="panel-body">
+                    Register
+                </div>
+            </a>
 
-                <a href="/#/user/profile" class="menu" ng-show="user.username">
-                    <div class="panel-body">
-                        Edit Profile
-                    </div>
-                </a>
+            <a href="/#/user/home" class="menu" ng-show="user.username && !(user.isAdmin)">
+                <div class="panel-body">
+                    Home
+                </div>
+            </a>
 
-                <a href="/#/ads" onclick="userAuthentication.logout()" ng-show="user.username">
-                    <div class="panel-body">
-                        Logout
-                    </div>
-                </a>
+            <a href="/#/user/ads" class="menu" ng-show="user.username && !(user.isAdmin)">
+                <div class="panel-body">
+                    My Ads
+                </div>
+            </a>
 
-            </accordion-group>
-        </accordion>
-    </div>
+            <a href="/#/user/ads/publish" class="menu" ng-show="user.username && !(user.isAdmin)">
+                <div class="panel-body">
+                    Publish New Ad
+                </div>
+            </a>
+
+            <a href="/#/user/profile" class="menu" ng-show="user.username && !(user.isAdmin)">
+                <div class="panel-body">
+                    Edit Profile
+                </div>
+            </a>
+
+            <a href="/#/admin/home" class="menu" ng-show="user.username && user.isAdmin">
+                <div class="panel-body">
+                    Ads
+                </div>
+            </a>
+
+            <a href="/#/user/profile" class="menu" ng-show="user.username && user.isAdmin">
+                <div class="panel-body">
+                    Users
+                </div>
+            </a>
+
+            <a href="/#/user/profile" class="menu" ng-show="user.username && user.isAdmin">
+                <div class="panel-body">
+                    Categories
+                </div>
+            </a>
+
+            <a href="/#/user/profile" class="menu" ng-show="user.username && user.isAdmin">
+                <div class="panel-body">
+                    Towns
+                </div>
+            </a>
+
+            <a href="/#/ads" onclick="userAuthentication.logout()" ng-show="user.username">
+                <div class="panel-body">
+                    Logout
+                </div>
+            </a>
+
+        </accordion-group>
+    </accordion>
+
+</div>
 
