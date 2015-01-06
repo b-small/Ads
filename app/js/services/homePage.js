@@ -14,7 +14,6 @@ adsApp.factory('homeData', function ($http, $log) {
 
             console.log(toAdd);
             $http({method:'GET', url:'http://softuni-ads.azurewebsites.net/api/ads?pageSize=5&startPage=' + startPage + toAdd})
-
                 .success(function(data, status, headers, config) {
                     console.log(startPage);
                     success(data);

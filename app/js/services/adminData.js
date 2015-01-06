@@ -6,7 +6,7 @@ adsApp.factory('adminData', function ($resource, $http) {
     $http.defaults.headers.common['Authorization'] = 'Bearer' + userAuthentication.getCurrentUser().access_token;
 
     var resource = $resource(
-        'http://softuni-ads.azurewebsites.net/api/admin/ads',
+        'http://softuni-ads.azurewebsites.net/api/admin/ads/:id',
         {id: '@id'},
         {
             update: {
@@ -20,11 +20,13 @@ adsApp.factory('adminData', function ($resource, $http) {
     }
 
     function getAdById(id) {
-        return resource.get({id: id});
+        return $http.get('http://softuni-ads.azurewebsites.net/api/admin/ads/' + id);
     }
 
     function editAd(id, ad) {
-        return resource.update({id: id}, ad);
+        console.log(id);
+        console.log(ad);
+        return $http.put('http://softuni-ads.azurewebsites.net/api/admin/ads/' + id, ad);
     }
 
     function deleteAd(id) {

@@ -1,0 +1,122 @@
+<div ng-include="'templates/header.html'"> </div>
+<div class="row">
+    <br/>
+    <br/>
+    <br/>
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-8">
+        <ul>
+            <li>
+                <div class="adContainer well">
+                    <h4>Confirm deleting ad?</h4>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="pull-left">
+                                {{ad.title}}
+                            </h4>
+                        </div>
+                        <div class="col-md-6">
+                       <span class="pull-right">
+                           {{ad.date | date: "dd-MMM-yyyy"}}
+                       </span>
+
+                            <br/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="" ng-src="{{ad.imageDataUrl || 'images/noImage.png'}}"/>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="adText">
+                                {{ad.text}}
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Town
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.townName}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Category
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.categoryName}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Username
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerUsername}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Name
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerName}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Email
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerEmail}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <br/> Phone
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="adInfo">
+                                        {{ad.ownerPhone}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-primary" id="registerBtn" ng-click="deleteAd(ad.id)">Delete
+                        </button>
+                        <a  href="/#/user/ads"><button type="button" class="btn btn-primary">Cancel</button> </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+

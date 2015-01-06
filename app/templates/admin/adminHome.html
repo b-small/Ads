@@ -32,7 +32,7 @@
                         <div class="col-md-4">
                             <img src="" ng-src="{{ad.imageDataUrl || 'images/noImage.png'}}"/>
                             <br/><br/><br/>
-                            <a type="submit" ng-show="ad.status === 'WaitingApproval'">
+                            <a type="submit"  ng-show="ad.status === 'WaitingApproval'">
                                 <button type="button" ng-click="approveAd(ad.id)" class="btn btn-default">Approve</button>
                             </a>
                             <br/><br/>
@@ -40,12 +40,12 @@
                                 <button type="button" ng-click="rejectAd(ad.id)" class="btn btn-default">Reject</button>
                             </a>
                             <br/><br/>
-                            <a type="submit" href="/#/delete/{{ad.id}}">
+                            <a type="submit" href="/#/admin/ads/edit/{{ad.id}}">
                                 <button type="button" class="btn btn-default">Edit</button>
                             </a>
                             <br/><br/>
-                            <a type="submit" >
-                                <button type="button" ng-click="deleteAd(ad.id)" class="btn btn-default">Delete</button>
+                            <a type="submit" href="/#/admin/ads/delete/{{ad.id}}">
+                                <button type="button" class="btn btn-default">Delete</button>
                             </a>
                         </div>
 

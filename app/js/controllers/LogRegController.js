@@ -12,7 +12,11 @@ adsApp.controller('LoginRegisterController', function($scope, $http, $location, 
         responsePromise.success(function(dataFromServer, status, headers, config) {
             console.log(dataFromServer);
             userAuthentication.login(dataFromServer);
-            $location.path( '/user/home' );
+            if(dataFromServer.isAdmin) {
+                $location.path('/admin/home');
+            } else {
+                $location.path('/user/home');
+            }
         });
         responsePromise.error(function(data, status, headers, config) {
             alert("Login failed!");
