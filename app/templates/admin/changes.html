@@ -1,0 +1,59 @@
+<div ng-include="'templates/header.html'"></div>
+
+<div class="row">
+    <br/>
+    <br/>
+    <br/>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>{{action}} {{dataType}}</legend>
+                <br/>
+
+                <div class="form-group">
+                    <label for="inputUsername" class="col-lg-2 control-label">Name </label>
+
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" ng-model="cat.name" ng-hide="action === delete" id="inputUsername" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <br/> 
+                        <a href="/#/admin/home"> Cancel</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary" ng-show="dataType === 'towns' && action === 'edit'" ng-click="editTown(cat)">Edit</button>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary" ng-show="dataType === 'categories' && action === 'edit'" ng-click="editCategory(cat)" >Edit</button>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary" ng-show="dataType === 'towns' && action === 'delete'" ng-click="deleteTown(cat)">Delete</button>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary" ng-show="dataType === 'categories' && action === 'delete'" ng-click="deleteCategory(cat)" >Delete</button>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary" ng-show="dataType === 'towns' && action === 'create'" ng-click="createTown(cat)">Create</button>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary" ng-show="dataType === 'categories' && action === 'create'" ng-click="createCategory(cat)" >Create</button>
+                    </div>
+
+
+                </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

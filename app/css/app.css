@@ -23,6 +23,10 @@ div {
     background: #2c3e50;
 }
 
+.th{
+    text-align:center;
+}
+
 .navbar-fixed-top, .panel-group, .panel, .panel-heading, .panel-title, .panel-default, .panel-default>.panel-heading {
     background: #2c3e50;
     color:white;

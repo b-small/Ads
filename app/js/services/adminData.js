@@ -24,8 +24,6 @@ adsApp.factory('adminData', function ($resource, $http) {
     }
 
     function editAd(id, ad) {
-        console.log(id);
-        console.log(ad);
         return $http.put('http://softuni-ads.azurewebsites.net/api/admin/ads/' + id, ad);
     }
 
@@ -41,12 +39,41 @@ adsApp.factory('adminData', function ($resource, $http) {
         return $http.put('http://softuni-ads.azurewebsites.net/api/admin/ads/reject/' + id);
     }
 
+
+    function editTownById(id, town) {
+        return $http.put('http://softuni-ads.azurewebsites.net/api/admin/towns/' + id, town);
+    }
+
+    function editCategoryById(id, category) {
+        return $http.put('http://softuni-ads.azurewebsites.net/api/admin/categories/' + id, category);
+    }
+
+    function deleteTown(id) {
+        return $http.delete('http://softuni-ads.azurewebsites.net/api/admin/towns/' + id);
+    }
+    function deleteCategory(id) {
+        return $http.delete('http://softuni-ads.azurewebsites.net/api/admin/categories/' + id);
+    }
+
+    function createTown(cat) {
+        return $http.post('http://softuni-ads.azurewebsites.net/api/admin/towns/', cat);
+    }
+    function createCategory(cat) {
+        return $http.post('http://softuni-ads.azurewebsites.net/api/admin/categories/', cat);
+    }
+
     return {
         getAllAds: getAllAds,
         getAdById: getAdById,
         editAd: editAd,
         deleteAd: deleteAd,
         approveAd: approveAd,
-        rejectAd: rejectAd
+        rejectAd: rejectAd,
+        editTownById: editTownById,
+        editCategoryById: editCategoryById,
+        deleteTown: deleteTown,
+        deleteCategory: deleteCategory,
+        createTown: createTown,
+        createCategory: createCategory
     }
 });

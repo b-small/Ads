@@ -69,6 +69,16 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
             controller: 'AdminAdsController'
         });
 
+        $routeProvider.when('/admin/:type/list', {
+            templateUrl: 'templates/admin/listUsers.html',
+            controller: 'AdminUserController'
+        });
+
+        $routeProvider.when('/admin/:type/:action/:id', {
+            templateUrl: 'templates/admin/changes.html',
+            controller: 'AdminUserController'
+        });
+
 
         $routeProvider.otherwise({redirectTo: '/ads'});
 

@@ -1,0 +1,39 @@
+<div ng-include="'templates/header.html'"> </div>
+<div class="row">
+    <br/>
+    <br/>
+    <br/>
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+    <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+
+        <td ng-show="dataType === 'users'">Username</td>
+        <td>Name</td>
+        <td ng-show="dataType === 'users'">Email</td>
+        <td ng-show="dataType === 'users'">Phone</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in type">
+        <td>{{user.username}}</td>
+        <td ng-show="dataType === 'users'">{{user.name}}</td>
+        <td ng-show="dataType === 'users'">{{user.email}}</td>
+        <td ng-show="dataType === 'users'">{{user.phoneNumber}}</td>
+        <td><a href="#/admin/{{dataType}}/edit/{{user.id}}">Edit</a>
+            <a href="#/admin/{{dataType}}/delete/{{user.id}}">Delete</a>
+        </td>
+
+    </tr>
+
+    <a href="#/admin/{{dataType}}/create/{{user.id}}" ng-hide="dataType=== 'users'">Create</a>
+        </tbody>
+        </table>
+        <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage"
+                    ng-change="pageChanged(currentPage)"></pagination>
+    </div>
+    </div>
