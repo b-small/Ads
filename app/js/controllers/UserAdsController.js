@@ -1,6 +1,6 @@
 adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $http, $log, $location) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
-    var responsePromise = adsData.getAll();
+    //var responsePromise = adsData.getAll();
     var selStat;
 
     $scope.user = userAuthentication.getCurrentUser();
@@ -8,17 +8,24 @@ adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $htt
     $scope.status = {
         open: false
     };
+   var info={
+       startPage: 1,
+        pageSize: 5,
+       url: 'http://softuni-ads.azurewebsites.net/api/user/ads?',
+       adStatus: selStat
+};
     var doIt = function () {
-
-        homeData.getAllUserAds(selStat, 1, function (resp) {
+        homeData.getResultsPage(info, function(resp) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
             $scope.itemsPerPage = 5;
-        });
+        }
+        );
     };
 
     $scope.pageChanged = function (newPage) {
-        homeData.getAllUserAds(selStat, newPage, function (resp) {
+        info.startPage = newPage;
+        homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
         });
     };
@@ -30,7 +37,7 @@ adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $htt
         } else {
             $scope.selectedStatus = value;
         }
-        selStat = $scope.selectedStatus;
+        info.adStatus = $scope.selectedStatus;
         console.log("Status" + selStat);
         doIt();
     };
@@ -105,4 +112,6 @@ adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $htt
                 $log.error(error);
             });
     };
+
+    doIt();
 });

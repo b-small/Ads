@@ -12,8 +12,14 @@ adsApp.controller('HomeController', function ($scope, homeData) {
         open: false
     };
 
+    var info={
+        startPage: 1,
+        pageSize: 5,
+        url: 'http://softuni-ads.azurewebsites.net/api/ads?'
+    };
+
     var doIt = function () {
-        homeData.getResultsPage(1, selTown, selCat, function (resp) {
+        homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
             console.log($scope.totalAds);
@@ -22,7 +28,8 @@ adsApp.controller('HomeController', function ($scope, homeData) {
     };
 
     $scope.pageChanged = function (newPage) {
-        homeData.getResultsPage(newPage, $scope.selectedTown, $scope.selectedCategory, function (resp) {
+        info.startPage= newPage;
+        homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
         });
     };
@@ -42,7 +49,7 @@ adsApp.controller('HomeController', function ($scope, homeData) {
         } else {
             $scope.selectedCategory = value;
         }
-        selCat = $scope.selectedCategory;
+        info.categoryId = $scope.selectedCategory;
         doIt();
     };
 
@@ -52,7 +59,7 @@ adsApp.controller('HomeController', function ($scope, homeData) {
         } else {
             $scope.selectedTown = town;
         }
-        selTown = $scope.selectedTown;
+        info.townId = $scope.selectedTown;
         doIt();
     };
 

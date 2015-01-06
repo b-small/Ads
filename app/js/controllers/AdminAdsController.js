@@ -1,9 +1,8 @@
 /**
  * Created by user on 1/5/2015.
  */
-adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location, $resource, $routeParams, $route, adminData) {
+adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location, $resource, $routeParams, $route, adminData, homeData) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
-    var responsePromise = adminData.getAllAds();
     var selStat;
 
     $scope.user = userAuthentication.getCurrentUser();
@@ -11,17 +10,27 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
     $scope.status = {
         open: false
     };
+    var info={
+        startPage: 1,
+        pageSize: 5,
+        url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?'
+    };
 
-    responsePromise.success(function (resp) {
-        $scope.data = resp;
-        $scope.totalAds = $scope.data.numItems;
-        $scope.itemsPerPage = 10;
-        console.log(JSON.stringify($scope.data.ads));
-    });
+    var doIt = function () {
+        homeData.getResultsPage(info, function (resp) {
+            $scope.data = resp;
+            $scope.totalAds = $scope.data.numItems;
+            console.log($scope.totalAds);
+            $scope.itemsPerPage = 5;
+        });
+    };
 
-    responsePromise.error(function (resp) {
-        console.log('Loading ads failed!');
-    });
+    $scope.pageChanged = function (newPage) {
+        info.startPage= newPage;
+        homeData.getResultsPage(info, function (resp) {
+            $scope.data = resp;
+        });
+    };
 
     $scope.approveAd = function (adId) {
         var responsePromise = adminData.approveAd(adId);
@@ -97,5 +106,38 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
             alert("editing ad failed!");
         });
 
+    };
+
+    $scope.setSelectedCategory = function (value) {
+        if ($scope.selectedCategory === value) {
+            $scope.selectedCategory = undefined;
+
+        } else {
+            $scope.selectedCategory = value;
+        }
+        info.categoryId = $scope.selectedCategory;
+        doIt();
+    };
+
+    $scope.setSelectedTown = function (town) {
+        if ($scope.selectedTown === town) {
+            $scope.selectedTown = undefined;
+        } else {
+            $scope.selectedTown = town;
+        }
+        info.townId = $scope.selectedTown;
+        doIt();
+    };
+
+    $scope.setSelectedStatus = function (value) {
+        if ($scope.selectedStatus === value) {
+            $scope.selectedStatus = undefined;
+
+        } else {
+            $scope.selectedStatus = value;
+        }
+        info.adStatus = $scope.selectedStatus;
+        console.log("Status" + selStat);
+        doIt();
     };
 });
