@@ -50,8 +50,16 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
 
 
     $scope.action = $routeParams.action;
+
     if ($routeParams.id !== undefined) {
         $scope.cat = $routeParams;
+        console.log($scope.cat);
+
+        if(dataType === 'users' && $scope.action === 'delete') {
+
+            
+
+        }
 
         $scope.action = $routeParams.action;
 
@@ -106,7 +114,6 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
         console.log(cat);
         adminData.createCategory(cat)
             .success(function (resp) {
-                console.log();
                 $location.path('/admin/' + dataType + '/list');
             })
             .error(function (resp) {
@@ -123,7 +130,5 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
             .error(function (resp) {
                 console.log('Loading ads failed!');
             });
-
-
     }
 });
