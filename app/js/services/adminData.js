@@ -56,10 +56,15 @@ adsApp.factory('adminData', function ($resource, $http) {
     }
 
     function createTown(cat) {
-        return $http.post('http://softuni-ads.azurewebsites.net/api/admin/towns/', cat);
+        return $http.post('http://softuni-ads.azurewebsites.net/api/admin/towns', cat);
     }
     function createCategory(cat) {
-        return $http.post('http://softuni-ads.azurewebsites.net/api/admin/categories/', cat);
+     
+        return $http.post('http://softuni-ads.azurewebsites.net/api/admin/categories', cat);
+    }
+
+    function deleteUser(username) {
+        return $http.delete('http://softuni-ads.azurewebsites.net/api/admin/user/' + username);
     }
 
     return {
@@ -74,6 +79,7 @@ adsApp.factory('adminData', function ($resource, $http) {
         deleteTown: deleteTown,
         deleteCategory: deleteCategory,
         createTown: createTown,
-        createCategory: createCategory
+        createCategory: createCategory,
+        deleteUser: deleteUser
     }
 });

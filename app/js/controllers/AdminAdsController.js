@@ -20,7 +20,6 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
         homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
-            console.log($scope.totalAds);
             $scope.itemsPerPage = 5;
         });
     };

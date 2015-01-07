@@ -20,13 +20,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="user in type">
-        <td>{{user.username}}</td>
-        <td ng-show="dataType === 'users'">{{user.name}}</td>
-        <td ng-show="dataType === 'users'">{{user.email}}</td>
-        <td ng-show="dataType === 'users'">{{user.phoneNumber}}</td>
-        <td><a href="/#/admin/{{dataType}}/edit/{{user.id}}">Edit</a>
-            <a href="/#/admin/{{dataType}}/delete/{{user.id}}">Delete</a>
+    <tr ng-repeat="thing in type">
+        <td>{{thing.username}}</td>
+        <td ng-show="dataType === 'users'">{{thing.name}}</td>
+        <td ng-show="dataType === 'users'">{{thing.email}}</td>
+        <td ng-show="dataType === 'users'">{{thing.phoneNumber}}</td>
+        <td><a href="/#/admin/{{dataType}}/edit/{{thing.id}}" ng-swow="dataType === 'categories' || dataType === 'towns' ">Edit</a>
+            <a href="/#/admin/{{dataType}}/delete/{{thing.id}}" ng-hide="dataType === 'users'">Delete</a>
+            <a href="/#/admin/{{dataType}}/edit/{{thing.username}}" ng-show="dataType === 'users'">Edit</a>
+            <a href="/#/admin/{{dataType}}/delete/{{thing.username}}" ng-show="dataType === 'users'">Delete</a>
         </td>
 
     </tr>

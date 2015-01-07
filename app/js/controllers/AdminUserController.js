@@ -8,6 +8,7 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
     $scope.user = userAuthentication.getCurrentUser();
 
+
     $scope.status = {
         open: false
     };
@@ -51,15 +52,12 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
 
     $scope.action = $routeParams.action;
 
+
     if ($routeParams.id !== undefined) {
         $scope.cat = $routeParams;
         console.log($scope.cat);
 
-        if(dataType === 'users' && $scope.action === 'delete') {
-
-            
-
-        }
+        console.log($scope.cat);
 
         $scope.action = $routeParams.action;
 
@@ -89,6 +87,18 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
         $scope.deleteCategory = function () {
             console.log($routeParams.id);
             adminData.deleteCategory($routeParams.id)
+                .success(function (resp) {
+                    console.log();
+                    $location.path('/admin/' + dataType + '/list');
+                })
+                .error(function (resp) {
+                    console.log('Loading ads failed!');
+                });
+        };
+
+        $scope.deleteUser = function () {
+            console.log($routeParams.id);
+            adminData.deleteUser($routeParams.id)
                 .success(function (resp) {
                     console.log();
                     $location.path('/admin/' + dataType + '/list');
