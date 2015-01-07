@@ -2,17 +2,13 @@
  * Created by user on 12/28/2014.
  */
 adsApp.controller('HomeController', function ($scope, homeData) {
-
-    var selCat;
-    var selTown;
-
     $scope.user = userAuthentication.getCurrentUser();
 
     $scope.status = {
         open: false
     };
 
-    var info={
+    var info = {
         startPage: 1,
         pageSize: 5,
         url: 'http://softuni-ads.azurewebsites.net/api/ads?'
@@ -22,13 +18,12 @@ adsApp.controller('HomeController', function ($scope, homeData) {
         homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
-            console.log($scope.totalAds);
             $scope.itemsPerPage = 5;
         });
     };
 
     $scope.pageChanged = function (newPage) {
-        info.startPage= newPage;
+        info.startPage = newPage;
         homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
         });
@@ -62,13 +57,4 @@ adsApp.controller('HomeController', function ($scope, homeData) {
         info.townId = $scope.selectedTown;
         doIt();
     };
-
-    $scope.byCategory = function (entry) {
-        return entry.categoryId === $scope.selectedCategory || $scope.selectedCategory === undefined;
-    };
-
-    $scope.byTown = function (entry) {
-        return entry.townId === $scope.selectedTown || $scope.selectedTown === undefined;
-    };
-
 });

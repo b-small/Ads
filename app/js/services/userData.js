@@ -24,7 +24,7 @@ adsApp.factory('userData', function ($resource, $http) {
         return $http.put("http://softuni-ads.azurewebsites.net/api/user/profile", user);
     }
 
-    function changePassword(password){
+    function changePassword(password) {
         return $http.put('http://softuni-ads.azurewebsites.net/api/user/changePassword', password);
     }
 

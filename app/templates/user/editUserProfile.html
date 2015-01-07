@@ -3,6 +3,7 @@
     <br/>
     <br/>
     <br/>
+
     <div class="col-md-2">
 
     </div>
@@ -12,13 +13,14 @@
         <form class="form-horizontal">
             <fieldset>
                 <br/>
+
                 <div class="row">
                     <div class="col-lg-6">
                         <legend>Edit Profile</legend>
                     </div>
                     <div class="col-lg-2"></div>
                     <div class="col-lg-4">
-                        <legend>   Change Password</legend>
+                        <legend> Change Password</legend>
                     </div>
                 </div>
 
@@ -48,7 +50,8 @@
                                 <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
                             </select>
                             <br/>
-                            <button type="button" class="btn btn-primary" id="registerBtn" ng-click="editUserProfile(user)">Update
+                            <button type="button" class="btn btn-primary" id="registerBtn"
+                                    ng-click="editUserProfile(user)">Update
                             </button>
                             <a href="/#/user/ads">
                                 <button type="button" class="btn btn-primary">Cancel</button>
@@ -66,7 +69,8 @@
                             <br/>
                             <input type="password" ng-model="user.newPass" class="form-control" id="inputNewPassword">
                             <br/>
-                            <input type="password" ng-model="user.confPass" class="form-control" id="confirmNewPassword">
+                            <input type="password" ng-model="user.confPass" class="form-control"
+                                   id="confirmNewPassword">
 
                             <br/>
                             <button type="button" class="btn btn-default" ng-click="changePass(user)">Change Password

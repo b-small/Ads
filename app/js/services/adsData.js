@@ -20,7 +20,6 @@ adsApp.factory('adsData', function ($resource, $http) {
                 method: 'PUT'
             }
         }
-
     );
 
     var publishAgainResource = $resource(
@@ -57,8 +56,8 @@ adsApp.factory('adsData', function ($resource, $http) {
         return deactivateResource.update({id: id});
     }
 
-    function publishAgainAd(id){
-        return publishAgainResource.update({id:id});
+    function publishAgainAd(id) {
+        return publishAgainResource.update({id: id});
     }
 
     return {

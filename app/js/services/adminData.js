@@ -5,16 +5,6 @@
 adsApp.factory('adminData', function ($resource, $http) {
     $http.defaults.headers.common['Authorization'] = 'Bearer' + userAuthentication.getCurrentUser().access_token;
 
-    var resource = $resource(
-        'http://softuni-ads.azurewebsites.net/api/admin/ads/:id',
-        {id: '@id'},
-        {
-            update: {
-                method: 'PUT'
-            }
-        });
-
-
     function getAllAds() {
         return $http.get('http://softuni-ads.azurewebsites.net/api/admin/ads');
     }
@@ -35,10 +25,9 @@ adsApp.factory('adminData', function ($resource, $http) {
         return $http.put('http://softuni-ads.azurewebsites.net/api/admin/ads/approve/' + id);
     }
 
-    function rejectAd(id){
+    function rejectAd(id) {
         return $http.put('http://softuni-ads.azurewebsites.net/api/admin/ads/reject/' + id);
     }
-
 
     function editTownById(id, town) {
         return $http.put('http://softuni-ads.azurewebsites.net/api/admin/towns/' + id, town);
@@ -51,6 +40,7 @@ adsApp.factory('adminData', function ($resource, $http) {
     function deleteTown(id) {
         return $http.delete('http://softuni-ads.azurewebsites.net/api/admin/towns/' + id);
     }
+
     function deleteCategory(id) {
         return $http.delete('http://softuni-ads.azurewebsites.net/api/admin/categories/' + id);
     }
@@ -58,8 +48,8 @@ adsApp.factory('adminData', function ($resource, $http) {
     function createTown(cat) {
         return $http.post('http://softuni-ads.azurewebsites.net/api/admin/towns', cat);
     }
+
     function createCategory(cat) {
-     
         return $http.post('http://softuni-ads.azurewebsites.net/api/admin/categories', cat);
     }
 

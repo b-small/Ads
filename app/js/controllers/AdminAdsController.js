@@ -1,16 +1,16 @@
 /**
  * Created by user on 1/5/2015.
  */
-adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location, $resource, $routeParams, $route, adminData, homeData) {
+adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location, $resource, $routeParams, $route, adminData, homeData, notifyService) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
-    var selStat;
 
     $scope.user = userAuthentication.getCurrentUser();
-
     $scope.status = {
         open: false
     };
-    var info={
+
+    var dataObject = {};
+    var info = {
         startPage: 1,
         pageSize: 5,
         url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?'
@@ -25,7 +25,7 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
     };
 
     $scope.pageChanged = function (newPage) {
-        info.startPage= newPage;
+        info.startPage = newPage;
         homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
         });
@@ -34,22 +34,22 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
     $scope.approveAd = function (adId) {
         var responsePromise = adminData.approveAd(adId);
         responsePromise.success(function (resp) {
-            console.log(resp);
+            notifyService.showInfo("Ad approved successfully!");
             $route.reload();
         });
         responsePromise.error(function (resp) {
-            console.log('Loading ads failed!');
+            notifyService.showError("Approving ad failed!");
         });
     };
 
     $scope.rejectAd = function (adId) {
         var responsePromise = adminData.rejectAd(adId);
         responsePromise.success(function (resp) {
-            console.log(resp);
+            notifyService.showInfo("Ad rejected successfully!");
             $route.reload();
         });
         responsePromise.error(function (resp) {
-            console.log('Loading ads failed!');
+            notifyService.showError("Rejecting ad failed!");
         });
     };
 
@@ -58,29 +58,27 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
         var responsePromise = $http.get("http://softuni-ads.azurewebsites.net/api/admin/ads/" + $routeParams.adId, {});
         responsePromise.success(function (dataFromServer) {
             $scope.ad = dataFromServer;
-            console.log("Ad: " + $scope.ad);
         });
         responsePromise.error(function (data, status, headers, config) {
-            alert("getting ad failed!");
+            notifyService.showError("Loading ad failed!");
         });
     }
+
 
     $scope.deleteAd = function () {
         var responsePromise = adminData.deleteAd($routeParams.adId);
         responsePromise.success(function (dataFromServer) {
             $location.path('admin/home');
+            notifyService.showInfo("Ad deleted successfully!");
         });
         responsePromise.error(function (data, status, headers, config) {
-            alert("deleting ad failed!");
+            notifyService.showError("Deleting ad failed!");
         });
     };
 
-    var dataObject = {};
 
     $scope.fileSelected = function (fileInputField) {
-        console.log(fileInputField.files[0]);
 
-        //delete $scope.adData.imageDataUrl;
         var file = fileInputField.files[0];
         if (file.type.match(/image\/.*/)) {
             var reader = new FileReader();
@@ -95,17 +93,19 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
         }
     };
 
-    $scope.editAd = function () {
 
+    $scope.editAd = function () {
         var responsePromise = adminData.editAd($routeParams.adId, $scope.ad);
         responsePromise.success(function (dataFromServer) {
             $location.path('admin/home');
+            notifyService.showInfo("Edited ad successfully!");
         });
         responsePromise.error(function (data, status, headers, config) {
-            alert("editing ad failed!");
+            notifyService.showError("Editing ad failed!");
         });
 
     };
+
 
     $scope.setSelectedCategory = function (value) {
         if ($scope.selectedCategory === value) {
@@ -118,6 +118,7 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
         doIt();
     };
 
+
     $scope.setSelectedTown = function (town) {
         if ($scope.selectedTown === town) {
             $scope.selectedTown = undefined;
@@ -128,6 +129,7 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
         doIt();
     };
 
+
     $scope.setSelectedStatus = function (value) {
         if ($scope.selectedStatus === value) {
             $scope.selectedStatus = undefined;
@@ -136,7 +138,6 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
             $scope.selectedStatus = value;
         }
         info.adStatus = $scope.selectedStatus;
-        console.log("Status" + selStat);
         doIt();
     };
 });

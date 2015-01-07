@@ -18,28 +18,28 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
         $routeProvider.when('/user/home', {
             templateUrl: 'templates/listAds.html',
             controller: 'HomeController',
-            //resolve: {loginRequired: loginRequired}
+            resolve: {loginRequired: loginRequired}
 
         });
 
         $routeProvider.when('/user/ads/publish', {
             templateUrl: 'templates/user/publishAd.html',
             controller: 'UserAdsController',
-        // resolve: {loginRequired: loginRequired}
+            resolve: {loginRequired: loginRequired}
 
         });
 
         $routeProvider.when('/user/ads', {
             templateUrl: 'templates/user/myAds.html',
             controller: 'UserAdsController',
-          //  resolve: {loginRequired: loginRequired}
+            resolve: {loginRequired: loginRequired}
 
         });
 
         $routeProvider.when('/delete/:adId', {
             templateUrl: 'templates/user/deleteAd.html',
             controller: 'DelAdController',
-          // resolve: {loginRequired: loginRequired}
+            resolve: {loginRequired: loginRequired}
         });
 
         $routeProvider.when('/edit/:adId', {
@@ -51,38 +51,44 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
         $routeProvider.when('/user/profile', {
             templateUrl: 'templates/user/editUserProfile.html',
             controller: 'EditUserProfileController',
-          //  resolve: {loginRequired: loginRequired}
+            resolve: {loginRequired: loginRequired}
         });
 
         $routeProvider.when('/admin/home', {
             templateUrl: 'templates/admin/adminHome.html',
-            controller: 'AdminAdsController'
+            controller: 'AdminAdsController',
+            resolve: {adminRequired: adminRequired}
         });
 
         $routeProvider.when('/admin/ads/delete/:adId', {
             templateUrl: 'templates/admin/adminDeleteAd.html',
-            controller: 'AdminAdsController'
+            controller: 'AdminAdsController',
+            resolve: {adminRequired: adminRequired}
         });
 
         $routeProvider.when('/admin/ads/edit/:adId', {
             templateUrl: 'templates/admin/adminEditAd.html',
-            controller: 'AdminAdsController'
+            controller: 'AdminAdsController',
+            resolve: {adminRequired: adminRequired}
         });
 
         $routeProvider.when('/admin/:type/list', {
             templateUrl: 'templates/admin/listUsers.html',
-            controller: 'AdminUserController'
+            controller: 'AdminUserController',
+            resolve: {adminRequired: adminRequired}
         });
 
         $routeProvider.when('/admin/:type/:action/:id', {
             templateUrl: 'templates/admin/changes.html',
-            controller: 'AdminUserController'
-        });
-        $routeProvider.when('/admin/:type/:action', {
-            templateUrl: 'templates/admin/changes.html',
-            controller: 'AdminUserController'
+            controller: 'AdminUserController',
+            resolve: {adminRequired: adminRequired}
         });
 
+        $routeProvider.when('/admin/:type/:action', {
+            templateUrl: 'templates/admin/changes.html',
+            controller: 'AdminUserController',
+            resolve: {adminRequired: adminRequired}
+        });
 
         $routeProvider.otherwise({redirectTo: '/ads'});
 

@@ -1,40 +1,42 @@
-<div ng-include="'templates/header.html'"> </div>
+<div ng-include="'templates/header.html'"></div>
 <div class="row">
     <br/>
     <br/>
     <br/>
+
     <div class="col-md-2">
 
     </div>
     <div class="col-md-8">
-    <table class="table table-striped table-hover ">
-    <thead>
-    <tr>
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
 
-        <td ng-show="dataType === 'users'">Username</td>
-        <td>Name</td>
-        <td ng-show="dataType === 'users'">Email</td>
-        <td ng-show="dataType === 'users'">Phone</td>
-        <td>Action</td>
+                <td ng-show="dataType === 'users'">Username</td>
+                <td>Name</td>
+                <td ng-show="dataType === 'users'">Email</td>
+                <td ng-show="dataType === 'users'">Phone</td>
+                <td>Action</td>
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="thing in type">
-        <td>{{thing.username}}</td>
-        <td ng-show="dataType === 'users'">{{thing.name}}</td>
-        <td ng-show="dataType === 'users'">{{thing.email}}</td>
-        <td ng-show="dataType === 'users'">{{thing.phoneNumber}}</td>
-        <td><a href="/#/admin/{{dataType}}/edit/{{thing.id}}" ng-swow="dataType === 'categories' || dataType === 'towns' ">Edit</a>
-            <a href="/#/admin/{{dataType}}/delete/{{thing.id}}" ng-hide="dataType === 'users'">Delete</a>
-            <a href="/#/admin/{{dataType}}/edit/{{thing.username}}" ng-show="dataType === 'users'">Edit</a>
-            <a href="/#/admin/{{dataType}}/delete/{{thing.username}}" ng-show="dataType === 'users'">Delete</a>
-        </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="thing in type">
+                <td>{{thing.username}}</td>
+                <td ng-show="dataType === 'users'">{{thing.name}}</td>
+                <td ng-show="dataType === 'users'">{{thing.email}}</td>
+                <td ng-show="dataType === 'users'">{{thing.phoneNumber}}</td>
+                <td><a href="/#/admin/{{dataType}}/edit/{{thing.id}}"
+                       ng-swow="dataType === 'categories' || dataType === 'towns' ">Edit</a>
+                    <a href="/#/admin/{{dataType}}/delete/{{thing.id}}" ng-hide="dataType === 'users'">Delete</a>
+                    <a href="/#/admin/{{dataType}}/edit/{{thing.username}}" ng-show="dataType === 'users'">Edit</a>
+                    <a href="/#/admin/{{dataType}}/delete/{{thing.username}}" ng-show="dataType === 'users'">Delete</a>
+                </td>
 
-    </tr>
+            </tr>
 
 
-        </tbody>
+            </tbody>
         </table>
 
         <a href="/#/admin/{{dataType}}/create" ng-hide="dataType=== 'users'">Create</a>
@@ -42,4 +44,4 @@
         <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage"
                     ng-change="pageChanged(currentPage)"></pagination>
     </div>
-    </div>
+</div>

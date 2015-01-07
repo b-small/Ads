@@ -1,9 +1,10 @@
-<div ng-include="'templates/header.html'"> </div>
+<div ng-include="'templates/header.html'"></div>
 
 <div class="row">
     <br/>
     <br/>
     <br/>
+
     <div class="col-md-2" ng-init="setSelectedStatus()">
 
         <div class="panel panel-primary">
@@ -83,7 +84,9 @@
                                 </a>
                                 <br/><br/>
                                 <a type="submit">
-                                    <button type="button" class="btn btn-default" ng-click="publishAgainAd(ad.id)">Publish Again</button>
+                                    <button type="button" class="btn btn-default" ng-click="publishAgainAd(ad.id)">
+                                        Publish Again
+                                    </button>
                                 </a>
                                 <br/><br/>
 

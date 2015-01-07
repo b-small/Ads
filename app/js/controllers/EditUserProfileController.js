@@ -1,13 +1,11 @@
 /**
  * Created by user on 1/4/2015.
  */
-adsApp.controller('EditUserProfileController', function ($scope, $http, $location, $log, userData) {
+adsApp.controller('EditUserProfileController', function ($scope, $http, $location, $log, userData, notifyService) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
-    $scope.user = {};
 
     $scope.user = userData.getUser();
 
-    console.log($scope.user);
     var dataObject = {};
     var pass = {};
 
@@ -24,11 +22,10 @@ adsApp.controller('EditUserProfileController', function ($scope, $http, $locatio
 
         var responsePromise = userData.editUser(dataObject);
         responsePromise.success(function (dataFromServer, status, headers, config) {
-            console.log('Success!');
-            $location.path('/user/home');
+            notifyService.showInfo("Successfully edited your profile!");
         });
         responsePromise.error(function (dataFromServer, status, headers, config) {
-            console.log('Laino!');
+            notifyService.showError("Editing profile failed!");
         });
     };
 
@@ -42,13 +39,11 @@ adsApp.controller('EditUserProfileController', function ($scope, $http, $locatio
 
         var responsePromise = userData.changePass(pass);
         responsePromise.success(function (dataFromServer, status, headers, config) {
-            console.log('Success');
-            $location.path('/user/home');
+            notifyService.showInfo("Successfully changed your password!");
         });
         responsePromise.error(function (data, status, headers, config) {
-            alert("Submitting form failed!");
+            notifyService.showError("Submitting form failed!");
         });
     }
-
 })
 ;

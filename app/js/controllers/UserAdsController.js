@@ -1,25 +1,26 @@
-adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $http, $log, $location) {
+adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $http, $log, $location, notifyService) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
-    //var responsePromise = adsData.getAll();
-    var selStat;
 
     $scope.user = userAuthentication.getCurrentUser();
 
     $scope.status = {
         open: false
     };
-   var info={
-       startPage: 1,
+
+    $scope.ad = {};
+
+    var info = {
+        startPage: 1,
         pageSize: 5,
-       url: 'http://softuni-ads.azurewebsites.net/api/user/ads?',
-       adStatus: selStat
-};
+        url: 'http://softuni-ads.azurewebsites.net/api/user/ads?'
+    };
+
     var doIt = function () {
-        homeData.getResultsPage(info, function(resp) {
-            $scope.data = resp;
-            $scope.totalAds = $scope.data.numItems;
-            $scope.itemsPerPage = 5;
-        }
+        homeData.getResultsPage(info, function (resp) {
+                $scope.data = resp;
+                $scope.totalAds = $scope.data.numItems;
+                $scope.itemsPerPage = 5;
+            }
         );
     };
 
@@ -38,16 +39,12 @@ adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $htt
             $scope.selectedStatus = value;
         }
         info.adStatus = $scope.selectedStatus;
-        console.log("Status" + selStat);
         doIt();
     };
 
-    $scope.checkStatus = function(adStatus, status) {
+    $scope.checkStatus = function (adStatus, status) {
         return adStatus === status;
     };
-
-    //do tuk
-    $scope.ad = {};
 
     $scope.fileSelected = function (fileInputField) {
         console.log(fileInputField.files[0]);
@@ -80,38 +77,40 @@ adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $htt
         adsData.create(dataObject)
             .$promise
             .then(function (data) {
-                console.log(data);
                 $location.path('/user/ads');
+                notifyService.showInfo("Ad published successfully!");
+
             },
             function (error) {
                 $log.error(error);
+                notifyService.showError("Publishing ad failed!");
             });
     };
 
-    $scope.deactivateAd =  function(adId){
-       adsData.deactivate(adId)
-           .$promise
-           .then(function (data) {
-               console.log(data);
-               $location.path('/user/ads');
-
-           },
-           function (error) {
-               $log.error(error);
-           });
+    $scope.deactivateAd = function (adId) {
+        adsData.deactivate(adId)
+            .$promise
+            .then(function (data) {
+                $location.path('/user/ads');
+                notifyService.showInfo("Ad deactivated successfully!");
+            },
+            function (error) {
+                $log.error(error);
+                notifyService.showError("Deactivating ad failed!");
+            });
     };
 
-    $scope.publishAgainAd =  function(adId){
+    $scope.publishAgainAd = function (adId) {
         adsData.publishAgain(adId)
             .$promise
             .then(function (data) {
-                console.log(data);
                 $location.path('/user/ads');
+                notifyService.showInfo("Published ad again successfully!");
             },
             function (error) {
                 $log.error(error);
+                notifyService.showError("Publishing ad again failed!");
             });
     };
-
     doIt();
 });

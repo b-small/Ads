@@ -1,8 +1,9 @@
 <div ng-include="'templates/header.html'"></div>
 <div class="row">
-<br/>
     <br/>
     <br/>
+    <br/>
+
     <div class="col-md-3" ng-include="'templates/catsAndTowns.html'"></div>
 
     <div class="col-md-1"></div>
@@ -74,7 +75,8 @@
                     </div>
                 </div>
             </li>
-            <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage" ng-change="pageChanged(currentPage)"></pagination>
+            <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage"
+                        ng-change="pageChanged(currentPage)"></pagination>
         </ul>
     </div>
 </div>

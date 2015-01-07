@@ -1,9 +1,10 @@
-<div ng-include="'templates/header.html'"> </div>
+<div ng-include="'templates/header.html'"></div>
 
 <div class="row">
     <br/>
     <br/>
     <br/>
+
     <div class="col-md-2">
     </div>
 
@@ -41,9 +42,10 @@
                 <div class="form-group">
 
                     <label class="col-lg-1 control-label">Image</label>
-                  <div class="col-lg-5 imageInput">  <input type="file" id="image"
-                           onchange="angular.element(this).scope().fileSelected(this)"/>
-                  </div>
+
+                    <div class="col-lg-5 imageInput"><input type="file" id="image"
+                                                            onchange="angular.element(this).scope().fileSelected(this)"/>
+                    </div>
                     <div class="col-lg-8">
 
                     </div>
@@ -79,7 +81,9 @@
                     <div class="col-lg-6">
                         <button type="button" class="btn btn-primary" id="registerBtn" ng-click="addAd(ad)">Publish
                         </button>
-                        <a href="/#/user/ads"><button type="button" class="btn btn-primary">Cancel</button> </a>
+                        <a href="/#/user/ads">
+                            <button type="button" class="btn btn-primary">Cancel</button>
+                        </a>
                     </div>
                 </div>
             </fieldset>
