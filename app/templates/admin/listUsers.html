@@ -1,4 +1,4 @@
-<div ng-include="'templates/header.html'"></div>
+<div ng-include="'templates/partials/header.html'"></div>
 <div class="row">
     <br/>
     <br/>
@@ -27,9 +27,9 @@
                 <td ng-show="dataType === 'users'">{{thing.email}}</td>
                 <td ng-show="dataType === 'users'">{{thing.phoneNumber}}</td>
                 <td><a href="/#/admin/{{dataType}}/edit/{{thing.id}}"
-                       ng-swow="dataType === 'categories' || dataType === 'towns' ">Edit</a>
+                       ng-show="dataType === 'categories' || dataType === 'towns' ">Edit</a>
                     <a href="/#/admin/{{dataType}}/delete/{{thing.id}}" ng-hide="dataType === 'users'">Delete</a>
-                    <a href="/#/admin/{{dataType}}/edit/{{thing.username}}" ng-show="dataType === 'users'">Edit</a>
+                    <a href="/#/admin/users/edit/{{thing.username}}" ng-show="dataType === 'users'">Edit</a>
                     <a href="/#/admin/{{dataType}}/delete/{{thing.username}}" ng-show="dataType === 'users'">Delete</a>
                 </td>
 

@@ -39,6 +39,7 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
             $scope.itemsPerPage = 20;
         });
     };
+
     $scope.pageChanged = function (newPage) {
         info.startPage = newPage;
         doIt();
@@ -47,12 +48,10 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
         });
     };
 
-
     if ($routeParams.id !== undefined) {
 
         $scope.cat = $routeParams;
         $scope.action = $routeParams.action;
-
 
         $scope.editCategory = function (cat) {
             adminData.editCategoryById($routeParams.id, cat)

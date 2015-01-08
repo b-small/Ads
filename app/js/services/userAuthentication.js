@@ -11,6 +11,11 @@ var userAuthentication = {
         }
     },
 
+    getCurrentUsername: function(){
+        var userData = userAuthentication.getCurrentUser();
+        return userData.username;
+    },
+
     logout: function () {
         delete sessionStorage['currentUser'];
     }

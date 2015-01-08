@@ -14,8 +14,12 @@ body {
 
 div {
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.selected{
+    background: #83EAC7;
 }
 
 .header {
@@ -42,6 +46,15 @@ div {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
     border: 0px;
+}
+
+a {
+    color: #2C3E50;
+}
+
+a:hover{
+    color: #2C3E50;
+    text-decoration: none;
 }
 
 span{
@@ -73,18 +86,24 @@ span{
 }
 
 .panel-body, .panel{
-    background: #D3FFF0;
     margin: 0px;
     margin-top: 0px;
+}
+
+.panel-body:hover {
+    background: #83EAC7;
+}
+
+.panel{
+    background: #D3FFF0;
+    border: 0px;
 }
 
 .panel-body {
     border: 1px solid;
     border-radius: 4px;
 }
-.panel {
-    border: 0px;
-}
+
 
 .panel-body {
     border: 1px solid;
@@ -94,6 +113,7 @@ span{
 .editLabel{
     margin-bottom: 45px;
 }
+
 img {
     border-radius: 4px;
     max-width: 200px;

@@ -78,11 +78,19 @@ var adsApp = angular.module('adsModule', ['ngResource', 'ngRoute', 'ui.bootstrap
             resolve: {adminRequired: adminRequired}
         });
 
+        $routeProvider.when('/admin/users/edit/:username', {
+            templateUrl: 'templates/user/editUserProfile.html',
+            controller: 'EditUserProfileController',
+            resolve: {adminRequired: adminRequired}
+        });
+
         $routeProvider.when('/admin/:type/:action/:id', {
             templateUrl: 'templates/admin/changes.html',
             controller: 'AdminUserController',
             resolve: {adminRequired: adminRequired}
         });
+
+
 
         $routeProvider.when('/admin/:type/:action', {
             templateUrl: 'templates/admin/changes.html',

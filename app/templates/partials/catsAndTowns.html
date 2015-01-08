@@ -1,0 +1,40 @@
+<div ng-init="setSelectedCategory()">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+        </div>
+
+        <a ng-click="setSelectedCategory()" class="default">
+            <div class="panel-body"> All</div>
+        </a>
+
+        <div ng-repeat="category in categories">
+            <a ng-click="setSelectedCategory(category.id)">
+                <div ng-class="{'selected': selectedCategory === category.id}" class="panel-body">
+                    {{category.name}}
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Towns</h3>
+    </div>
+    <a ng-click="setSelectedTown()">
+        <div class="panel-body">
+            All
+        </div>
+    </a>
+
+    <div ng-repeat="town in towns">
+        <a ng-click="setSelectedTown(town.id)">
+            <div ng-class="{'selected': selectedTown === town.id}" class="panel-body">
+                {{town.name}}
+            </div>
+        </a>
+    </div>
+
+</div>

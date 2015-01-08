@@ -57,6 +57,18 @@ adsApp.factory('adminData', function ($resource, $http) {
         return $http.delete('http://softuni-ads.azurewebsites.net/api/admin/user/' + username);
     }
 
+    function getAllUsers() {
+        return $http.get("http://softuni-ads.azurewebsites.net/api/admin/users?pageSize=1000", {});
+    }
+
+    function editUser(username, user) {
+       return $http.put("http://softuni-ads.azurewebsites.net/api/admin/user/"+ username, user);
+    }
+
+    function editUserPassword(user) {
+        return $http.put("http://softuni-ads.azurewebsites.net/api/admin/setpassword", user);
+    }
+
     return {
         getAllAds: getAllAds,
         getAdById: getAdById,
@@ -70,6 +82,9 @@ adsApp.factory('adminData', function ($resource, $http) {
         deleteCategory: deleteCategory,
         createTown: createTown,
         createCategory: createCategory,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        getUsers: getAllUsers,
+        editUser: editUser,
+        editUserPassword: editUserPassword
     }
 });

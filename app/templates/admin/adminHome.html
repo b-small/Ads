@@ -1,11 +1,11 @@
-<div ng-include="'templates/header.html'"></div>
+<div ng-include="'templates/partials/header.html'"></div>
 
 <div class="row">
     <br/>
     <br/>
     <br/>
 
-    <div class="col-md-2" ng-include="'templates/catsAndTowns.html'"></div>
+    <div class="col-md-2" ng-include="'templates/partials/catsAndTowns.html'"></div>
     <div class="col-md-8">
         <ul>
             <li ng-repeat="ad in data.ads">
@@ -138,43 +138,9 @@
         </ul>
     </div>
 
-    <div class="col-md-2" ng-init="setSelectedStatus()">
+    <div class="col-md-2" ng-init="setSelectedStatus()" ng-include="'templates/partials/adsStatusMenu.html'">
 
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Ads</h3>
-            </div>
 
-            <a class="menu" ng-click="setSelectedStatus()">
-                <div class="panel-body">
-                    All
-                </div>
-            </a>
-
-            <a class="menu" ng-click="setSelectedStatus('Published')">
-                <div class="panel-body">
-                    Published
-                </div>
-            </a>
-
-            <a class="menu" ng-click="setSelectedStatus('WaitingApproval')">
-                <div class="panel-body">
-                    Waiting Approval
-                </div>
-            </a>
-
-            <a class="menu" ng-click="setSelectedStatus('Inactive')">
-                <div class="panel-body">
-                    Inactive
-                </div>
-            </a>
-
-            <a class="menu" ng-click="setSelectedStatus('Rejected')">
-                <div class="panel-body">
-                    Rejected
-                </div>
-            </a>
-        </div>
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $http, $log, $location, notifyService) {
+adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $http, $log, $location, $route, notifyService) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
 
     $scope.user = userAuthentication.getCurrentUser();
@@ -61,6 +61,13 @@ adsApp.controller('UserAdsController', function ($scope, adsData, homeData, $htt
             $(".image-box").html("<p>File type not supported!</p>");
         }
     };
+
+
+    $scope.deleteImage = function(){
+        $scope.ad.imageDataUrl = undefined;
+        $route.reload();
+    };
+
 
     $scope.addAd = function () {
         var dataObject = {

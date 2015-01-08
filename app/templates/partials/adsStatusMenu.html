@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">My Ads</h3>
+    </div>
+
+    <a class="menu" ng-click="setSelectedStatus()">
+        <div class="panel-body">
+            All
+        </div>
+    </a>
+
+    <a class="menu" ng-click="setSelectedStatus('Published')">
+        <div class="panel-body"  ng-class="{'selected': selectedStatus === 'Published'}">
+            Published
+        </div>
+    </a>
+
+    <a class="menu" ng-click="setSelectedStatus('WaitingApproval')">
+        <div class="panel-body"  ng-class="{'selected': selectedStatus === 'WaitingApproval'}">
+            Waiting Approval
+        </div>
+    </a>
+
+    <a class="menu" ng-click="setSelectedStatus('Inactive')">
+        <div class="panel-body"  ng-class="{'selected': selectedStatus === 'Inactive'}">
+            Inactive
+        </div>
+    </a>
+
+    <a class="menu" ng-click="setSelectedStatus('Rejected')">
+        <div class="panel-body" ng-class="{'selected': selectedStatus === 'Rejected'}">
+            Rejected
+        </div>
+    </a>
+</div>

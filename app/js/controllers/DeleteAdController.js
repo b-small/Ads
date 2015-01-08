@@ -1,7 +1,7 @@
 /**
  * Created by user on 1/2/2015.
  */
-adsApp.controller('DelAdController', function ($scope, $http, $routeParams, $location, adsData, notifyService) {
+adsApp.controller('DelAdController', function ($scope, $http, $routeParams, $location, $route, adsData, notifyService) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
 
     $scope.user = userAuthentication.getCurrentUser();
@@ -66,5 +66,10 @@ adsApp.controller('DelAdController', function ($scope, $http, $routeParams, $loc
                 $log.error(error);
                 notifyService.showError("Editing ad failed!");
             });
+    };
+
+    $scope.deleteImage = function(){
+        $scope.ad.imageDataUrl = undefined;
+
     };
 });
