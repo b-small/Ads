@@ -134,7 +134,7 @@
                 </div>
             </li>
             <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage"
-                        ng-change="pageChanged(currentPage)"></pagination>
+                        boundary-links="true" rotate="false" max-size="maxSize"  ng-change="pageChanged(currentPage)"></pagination>
         </ul>
     </div>
 

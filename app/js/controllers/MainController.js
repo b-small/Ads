@@ -19,6 +19,8 @@ adsApp.controller('HomeController', function ($scope, homeData) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
             $scope.itemsPerPage = 5;
+            $scope.numPages = Math.ceil($scope.totalAds/$scope.itemsPerPage);
+
         });
     };
 

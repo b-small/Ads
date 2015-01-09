@@ -4,7 +4,7 @@
     <br/>
     <br/>
 
-    <div class="col-md-3" ng-include="'templates/partials/catsAndTowns.html'"></div>
+    <div class="col-md-2" ng-include="'templates/partials/catsAndTowns.html'"></div>
 
     <div class="col-md-1"></div>
 
@@ -76,7 +76,7 @@
                 </div>
             </li>
             <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage"
-                        ng-change="pageChanged(currentPage)"></pagination>
+                        boundary-links="true" rotate="false" num-pages="numPages" ng-change="pageChanged(currentPage)"></pagination>
         </ul>
     </div>
 </div>

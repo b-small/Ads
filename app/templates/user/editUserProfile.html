@@ -41,31 +41,31 @@
 
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" ng-model="user.username" ng-show="isUserAdmin" class="form-control" id="inputUsername">
+                            <input type="text" ng-model="currentUser.username" disabled ng-show="isUserAdmin" class="form-control" id="inputUsername">
                             <br/>
-                            <input type="text" ng-model="user.name" class="form-control" id="inputName">
+                            <input type="text" ng-model="currentUser.name" class="form-control" id="inputName">
                             <br/>
-                            <input type="text" ng-model="user.email" class="form-control" id="inputEmail">
+                            <input type="text" ng-model="currentUser.email" class="form-control" id="inputEmail">
                             <br/>
-                            <input type="text" ng-model="user.phoneNumber" class="form-control" id="inputPhone">
+                            <input type="text" ng-model="currentUser.phoneNumber" class="form-control" id="inputPhone">
                             <br/>
-                            <select class="form-control" ng-model="user.townId" id="inputTown">
+                            <select class="form-control" ng-model="currentUser.townId" id="inputTown">
                                 <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
                             </select>
                             <br/>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" ng-model="isAdmin" ng-true-value="true" ng-false-value="false"> is Admin
+                                    <input type="checkbox" ng-model="currentUser.isAdmin" ng-true-value="true" ng-false-value="false"> is Admin
                                 </label>
                             </div>
                             <br/>
 
                             <button type="button" class="btn btn-primary" id="registerBtn"
-                                    ng-click="editUserProfile(user)" ng-hide="isAdmin && isUserAdmin">Update
+                                    ng-click="editUserProfile(currentUser)" ng-hide="isUserAdmin">Update
                             </button>
                             <button type="button" class="btn btn-primary"
-                                    ng-click="editUserProfileAdmin(user)" ng-show="isAdmin && isUserAdmin">Update
+                                    ng-click="editUserProfileAdmin(currentUser)" ng-show="isUserAdmin">Update
                             </button>
                             <a href="/#/user/ads">
                                 <button type="button" class="btn btn-primary">Cancel</button>
@@ -79,17 +79,17 @@
                             <label for="confirmNewPassword" class="editLabel">Confirm new password</label>
                         </div>
                         <div class="col-lg-4">
-                            <input type="password" ng-model="user.oldPass" class="form-control" id="inputPassword" ng-show="!isUserAdmin">
+                            <input type="password" ng-model="currentUser.oldPass" class="form-control" id="inputPassword" ng-show="!isUserAdmin">
                             <br/>
-                            <input type="password" ng-model="user.newPass" class="form-control" id="inputNewPassword">
+                            <input type="password" ng-model="currentUser.newPass" class="form-control" id="inputNewPassword">
                             <br/>
-                            <input type="password" ng-model="user.confPass" class="form-control"
+                            <input type="password" ng-model="currentUser.confPass" class="form-control"
                                    id="confirmNewPassword">
 
                             <br/>
-                            <button type="button" class="btn btn-default" ng-click="changePass(user)" ng-hide="isUserAdmin && isAdmin">Change Password
+                            <button type="button" class="btn btn-default" ng-click="changePass(currentUser)" ng-hide="isUserAdmin">Change Password
                             </button>
-                            <button type="button" class="btn btn-default" ng-click="changeUserPasswordAdmin(user)" ng-show="isUserAdmin && isAdmin">Change Password
+                            <button type="button" class="btn btn-default" ng-click="changeUserPasswordAdmin(currentUser)" ng-show="isUserAdmin">Change Password
                             </button>
                             <a href="/#/user/ads">
                                 <button type="button" class="btn btn-primary">Cancel</button>

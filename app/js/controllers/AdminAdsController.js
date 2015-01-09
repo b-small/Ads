@@ -13,6 +13,7 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
     var info = {
         startPage: 1,
         pageSize: 5,
+        maxSize: 10,
         url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?'
     };
 
@@ -21,11 +22,14 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
             $scope.itemsPerPage = 5;
+            $scope.numPages = Math.ceil($scope.totalAds/$scope.itemsPerPage);
+
         });
     };
 
     $scope.pageChanged = function (newPage) {
         info.startPage = newPage;
+
         homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
         });

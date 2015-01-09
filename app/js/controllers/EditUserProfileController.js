@@ -3,28 +3,24 @@
  */
 adsApp.controller('EditUserProfileController', function ($scope, $http, $location, $log, $routeParams, userData, adminData, notifyService) {
     $http.defaults.headers.common['Authorization'] = "Bearer " + userAuthentication.getCurrentUser().access_token;
-
-    $scope.user = {};
+    $scope.user = userAuthentication.getCurrentUser();
+    $scope.currentUser = {};
     $scope.isUserAdmin = userAuthentication.getCurrentUser().isAdmin;
 
-    console.log($scope.isUserAdmin);
-
     if(!userAuthentication.getCurrentUser().isAdmin) {
-        $scope.user = userData.getUser();
+        $scope.currentUser = $scope.user;
     } else {
         var responsePromise = adminData.getUsers();
         responsePromise.success(function(dataFromServer, status, headers, config) {
-            console.log($routeParams);
-            console.log(dataFromServer.users.length);
+
             for(var i=0; i < dataFromServer.users.length;i++){
                 if(dataFromServer.users[i].username == $routeParams.username)
-                    $scope.user = dataFromServer.users[i];
+                    $scope.currentUser = dataFromServer.users[i];
             }	});
         responsePromise.error(function(data, status, headers, config) {
             alert("Submitting form failed!");
         });
     }
-    console.log($scope.user);
 
     var dataObject = {};
     var pass = {};
@@ -33,6 +29,7 @@ adsApp.controller('EditUserProfileController', function ($scope, $http, $locatio
         open: false
     };
 
+    console.log($scope.user);
     $scope.editUserProfile = function (user) {
 
         dataObject.name = user.name;
@@ -67,14 +64,16 @@ adsApp.controller('EditUserProfileController', function ($scope, $http, $locatio
     };
 
     $scope.editUserProfileAdmin = function(user) {
-        dataObject.username=user.username;
         dataObject.name = user.name;
         dataObject.email = user.email;
         dataObject.phoneNumber = user.phoneNumber;
         dataObject.townId = user.townId;
+        dataObject.isAdmin = user.isAdmin;
+        console.log(dataObject);
 
         adminData.editUser($routeParams.username, dataObject)
         .success(function (dataFromServer, status, headers, config) {
+                $location.path('admin/users/list');
             notifyService.showInfo("Successfully edited " + $routeParams.username + "'s profile!");
         })
        .error(function (dataFromServer, status, headers, config) {
@@ -83,20 +82,19 @@ adsApp.controller('EditUserProfileController', function ($scope, $http, $locatio
     };
 
     $scope.changeUserPasswordAdmin = function(user) {
-        var user = {
+        var currentUser = {
             username: user.username,
             newPassword: user.newPass,
             confirmPassword: user.confPass
         };
 
-        adminData.editUserPassword(user)
+        adminData.editUserPassword(currentUser)
             .success(function (dataFromServer, status, headers, config) {
+                $location.path('admin/users/list');
                 notifyService.showInfo("Successfully edited " + $routeParams.username + "'s password!");
             })
             .error(function (dataFromServer, status, headers, config) {
                 notifyService.showError("Editing password failed!");
             });
-
-
     }
 });

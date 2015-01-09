@@ -37,6 +37,8 @@ adsApp.controller('AdminUserController', function ($scope, $http, $log, $locatio
             $scope.totalAds = $scope.data.numItems;
 
             $scope.itemsPerPage = 20;
+            $scope.numPages = Math.ceil($scope.totalAds/$scope.itemsPerPage);
+
         });
     };
 
