@@ -12,7 +12,7 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
     var dataObject = {};
     var info = {
         startPage: 1,
-        pageSize: 5,
+        pageSize: 10,
         maxSize: 10,
         url: 'http://softuni-ads.azurewebsites.net/api/admin/ads?'
     };
@@ -21,7 +21,7 @@ adsApp.controller('AdminAdsController', function ($scope, $http, $log, $location
         homeData.getResultsPage(info, function (resp) {
             $scope.data = resp;
             $scope.totalAds = $scope.data.numItems;
-            $scope.itemsPerPage = 5;
+            $scope.itemsPerPage = 10;
             $scope.numPages = Math.ceil($scope.totalAds/$scope.itemsPerPage);
 
         });

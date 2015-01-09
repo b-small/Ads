@@ -10,7 +10,7 @@ adsApp.factory('homeData', function ($http, $log, notifyService) {
             if (info.pageSize != undefined) {
                 toAdd += 'pageSize=' + info.pageSize;
             } else {
-                toAdd += 'pageSize=' + 5;
+                toAdd += 'pageSize=' + 10;
             }
 
             if (info.startPage != undefined) {

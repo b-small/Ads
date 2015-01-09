@@ -42,6 +42,6 @@
         <a href="/#/admin/{{dataType}}/create" ng-hide="dataType=== 'users'">Create</a>
 
         <pagination total-items="totalAds" ng-model="currentPage" items-per-page="itemsPerPage"
-                    ng-change="pageChanged(currentPage)"></pagination>
+                    boundary-links="true" ng-change="pageChanged(currentPage)"></pagination>
     </div>
 </div>
